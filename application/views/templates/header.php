@@ -53,5 +53,5 @@
 
 </head>
 
-<body class="hold-transition layout-top-nav">
+<body class="hold-transition layout-top-nav" style="height: auto; min-height: 0;">
     <div class="wrapper">

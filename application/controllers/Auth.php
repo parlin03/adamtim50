@@ -12,7 +12,7 @@ class Auth extends CI_Controller
     {
         if ($this->session->userdata('user_id')) {
             if ($this->session->userdata('role_id') == 1) {
-                redirect(base_url('home'));
+                redirect(base_url("/home"));
             } elseif ($this->session->userdata('role_id') == 2) {
                 redirect('home');
             } elseif ($this->session->userdata('role_id') == 3) {
@@ -71,9 +71,9 @@ class Auth extends CI_Controller
                     ];
                     $this->session->set_userdata($data);
                     if ($user['role_id'] == 1) {
-                        redirect(base_url('home'));
+                        redirect(base_url());
                     } elseif ($user['role_id'] == 2) {
-                        redirect('home');
+                        redirect(base_url());
                     } elseif ($user['role_id'] == 3) {
                         redirect('verifikasi');
                     } elseif ($user['role_id'] == 4) {
