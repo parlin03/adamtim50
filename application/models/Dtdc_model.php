@@ -1,21 +1,28 @@
 <?php
+
+use Symfony\Component\Yaml\Dumper;
+
 defined('BASEPATH') or exit('No direct script access allowed');
 
 class Dtdc_model extends CI_Model
 {
     private $table = 'lks_dtdc';
+    private $tbl_dpt = 'dpt';
 
 
     public function __construct()
     {
         parent::__construct();
     }
+
+
+
     public function rules()
     {
         return [
             [
-                'field' => 'nik',  //samakan dengan atribute name pada tags input
-                'label' => 'Nik',  // label yang kan ditampilkan pada pesan error
+                'field' => 'noktp',  //samakan dengan atribute name pada tags input
+                'label' => 'Noktp',  // label yang kan ditampilkan pada pesan error
                 'rules' => 'trim|required' //rules validasi
             ],
             [
@@ -31,7 +38,6 @@ class Dtdc_model extends CI_Model
         ];
     }
 
-    //menampilkan data mahasiswa berdasarkan id mahasiswa
     public function getById($id)
     {
         return $this->db->get_where($this->table, ["id" => $id])->row();
@@ -51,6 +57,28 @@ class Dtdc_model extends CI_Model
         //select * from mahasiswa order by IdMhsw desc
     }
 
+    public function getLksDtdc()
+    {
+        $this->db->select('lks_dtdc.id, dpt.noktp, dpt.nama, dpt.alamat, namakel, namakec, rt, rw, tps, lks_dtdc.nohp, image');
+        $this->db->from('dpt');
+        $this->db->join('lks_dtdc', 'lks_dtdc.dpt_id = dpt.id');
+        $this->db->order_by('lks_dtdc.id', 'DESC');
+        $this->db->limit(5);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    public function search($keyword)
+    {
+        if (!$keyword) {
+            return null;
+        }
+        $this->db->like('noktp', $keyword);
+        $query = $this->db->get($this->tbl_dpt);
+
+        return $query->result_array();
+    }
+    //menampilkan data mahasiswa berdasarkan id mahasiswa
     //menyimpan data mahasiswa
     public function save()
     {

@@ -20,38 +20,22 @@ class Dtdc extends CI_Controller
         $data['title'] = 'Door to Door Campaign';
         $data['user'] = $this->db->get_where('user', ['id' => $this->session->userdata('user_id')])->row_array();
         $this->db->where('user_id', $this->session->userdata('user_id'));
-        $this->db->order_by('id', 'ASC');
-        $data['dtdc'] = $this->db->get('lks_dtdc')->result_array(); //array banyak
+        $data['dtdc'] = $this->m_dtdc->getLksDtdc(); //array banyak
 
-        $this->form_validation->set_rules('nik', 'Nik', 'required');
-        $this->form_validation->set_rules('nama', 'Nama', 'required');
-        $this->form_validation->set_rules('alamat', 'Alamat', 'required');
-        $this->form_validation->set_rules('tanggapan', 'Tanggapan', 'required');
-
+        $data['keyword'] = $this->input->post('keyword');
+        $this->load->model('Dtdc_model');
+        $check = $this->db->get_where('lks_dtdc', ['noktp' => $data['keyword']]);
+        if ($check->num_rows() > 0) {
+            $this->session->set_flashdata('error', "Data NIK Terdaftar");
+            $data['search_result'] = '';
+        } else {
+            $data['search_result'] = $this->Dtdc_model->search($data['keyword']);
+        }
         $this->load->view('templates/header', $data);
         // $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
         $this->load->view('dtdc', $data);
         $this->load->view('templates/footer');
-
-
-        // if ($this->form_validation->run() == false) {
-        // } else {
-        //     $data = [
-        //         'nik'       => $this->input->post('nik'),
-        //         'nama'      => $this->input->post('nama'),
-        //         'alamat'    => $this->input->post('alamat'),
-        //         'namakel' => $this->input->post('kelurahan'),
-        //         'namakec' => $this->input->post('kecamatan'),
-        //         'nohp'      => $this->input->post('nohp'),
-        //         'tanggapan' => $this->input->post('tanggapan'),
-        //         'user_id'   => $this->session->userdata('user_id')
-        //     ];
-
-        //     $this->db->insert('lks_dtdc', $data);
-        //     $this->session->set_flashdata('message', '<div class="alert alert-success" role ="alert">New DTDC added!</div>');
-        //     redirect('dtdc');
-        // }
     }
     public function add()
     {
@@ -61,7 +45,10 @@ class Dtdc extends CI_Controller
         $this->db->order_by('id', 'ASC');
         $data['dtdc'] = $this->db->get('lks_dtdc')->result_array(); //array banyak
 
-        $this->form_validation->set_rules('nik', 'Nik', 'required');
+        $this->form_validation->set_rules('dpt_id', 'Dpt_id', 'required|is_unique[user.email]', [
+            'is_unique' => 'This NIK has already registered'
+        ]);
+        $this->form_validation->set_rules('noktp', 'Noktp', 'required');
         $this->form_validation->set_rules('nama', 'Nama', 'required');
         $this->form_validation->set_rules('alamat', 'Alamat', 'required');
 
@@ -69,20 +56,41 @@ class Dtdc extends CI_Controller
             $this->session->set_flashdata('error', "Data Gagal Di Tambahkan");
             redirect('dtdc');
         } else {
-            $data = [
-                'nik'       => $this->input->post('nik'),
-                'nama'      => $this->input->post('nama'),
-                'alamat'    => $this->input->post('alamat'),
-                'namakel' => $this->input->post('kelurahan'),
-                'namakec' => $this->input->post('kecamatan'),
-                'nohp'      => $this->input->post('nohp'),
-                'tanggapan' => $this->input->post('tanggapan'),
-                'user_id'   => $this->session->userdata('user_id')
-            ];
 
-            $this->db->insert('lks_dtdc', $data);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role ="alert">New DTDC added!</div>');
-            redirect('dtdc');
+            $upload_image = $_FILES['image']['name'];
+
+            if ($upload_image) {
+                $new_name                = $data['user']['id'] . time() . $_FILES["image"]['name'];
+                $config['file_name']     = $new_name;
+                $config['allowed_types'] = 'bmp|gif|jpeg|jpg|png|tiff|tiff|webp';
+                $config['max_size']      = '2048';
+                $config['upload_path']   = './assets/img/dtdc/';
+
+                $this->load->library('upload', $config);
+                if ($this->upload->do_upload('image')) {
+                    // $old_image = $data['user']['image'];
+                    // if ($old_image != 'default.jpg') {
+                    //     unlink(FCPATH . 'assets/img/dtdc/' . $old_image);
+                    // }
+
+                    $datanew = [
+                        'dpt_id'       => $this->input->post('dpt_id'),
+                        'noktp'       => $this->input->post('noktp'),
+                        'nohp'      => $this->input->post('nohp'),
+                        'image' =>  $this->upload->data('file_name'),
+                        'user_id'   => $this->session->userdata('user_id'),
+                        'date_created'   => date("Y-m-d")
+
+                    ];
+                    $this->db->insert('lks_dtdc', $datanew);
+                    $this->session->set_flashdata('message', '<div class="alert alert-success" role ="alert">New DTDC added!</div>');
+                    redirect('dtdc');
+                    // $new_image = $this->upload->data('file_name');
+                    // $this->db->set('image', $new_image);
+                } else {
+                    echo $this->upload->display_errors();
+                }
+            }
         }
     }
 

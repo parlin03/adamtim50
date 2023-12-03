@@ -34,7 +34,7 @@
 
                                     <div class="input-group-append">
                                         <button type="submit" class="btn btn-default">
-                                            <i class="fas fa-plus"></i>
+                                            <a href="<?= base_url('dtdc'); ?>" class="btn btn-primary"> <i class="fas fa-plus"></i></a>
                                         </button>
                                     </div>
                                 </div>
@@ -111,38 +111,32 @@
                                         <th style="width: 10px">#</th>
                                         <th>Kecamatan</th>
                                         <th>Terdaftar</th>
-                                        <th>Konfirmasi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td>1.</td>
                                         <td>Panakkukang</td>
-                                        <td class="text-right">0</td>
-                                        <td class="text-right">0</td>
+                                        <td>0</td>
                                     </tr>
                                     <tr>
                                         <td>2.</td>
                                         <td>Biringkanaya</td>
-                                        <td class="text-right">0</td>
                                         <td class="text-right">0</td>
                                     </tr>
                                     <tr>
                                         <td>3.</td>
                                         <td>Manggala</td>
                                         <td class="text-right">0</td>
-                                        <td class="text-right">0</td>
                                     </tr>
                                     <tr>
                                         <td>4.</td>
                                         <td>Tamalanrea</td>
                                         <td class="text-right">0</td>
-                                        <td class="text-right">0</td>
                                     </tr>
                                     <tr>
                                         <td>5.</td>
                                         <td>Lainnya</td>
-                                        <td class="text-right">0</td>
                                         <td class="text-right">0</td>
                                     </tr>
                                 </tbody>
@@ -150,7 +144,6 @@
                                     <tr>
 
                                         <th colspan="2" class="text-center">Total</th>
-                                        <th class="text-right">0</th>
                                         <th class="text-right">0</th>
                                     </tr>
                                 </tfoot>
@@ -191,7 +184,7 @@
                                             <br>11-7-2014
                                             <!-- <span class="tag tag-success">Approved</span> -->
                                         </td>
-                                        <td style="width: 10px">
+                                        <td style="width: 200px">
                                             <img class="img-fluid " src="<?= base_url('assets/img/profile/') . $user['image'] ?>">
 
                                         </td>
@@ -202,12 +195,19 @@
                                             <br>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.
                                             <br>11-7-2014
                                         </td>
+                                        <td style="width: 150px">
+                                            <div class="text-center">
+                                                <img class="profile-user-img img-fluid img-circle" src="<?= base_url('assets/img/profile/') . $user['image'] ?>" alt="User profile picture">
+                                            </div>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>
                                             <b>657 Bob Doe</b>
                                             <br>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.
                                             <BR>11-7-2014
+                                        </td>
+                                        <td style="width: 150px">
                                         </td>
                                     </tr>
                                     <tr>
