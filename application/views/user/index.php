@@ -29,6 +29,7 @@
                             <h3 class="profile-username text-center"><?= $user['name']; ?></h3>
                             <p class="text-muted text-center"><?= $user['email']; ?></p>
 
+                            <p class="text-muted text-center">Member since <?= date('d F Y', $user['date_created']); ?></p>
                             <!-- <small class="text-muted text-right">Member since <?= date('d F Y', $user['date_created']); ?></small> -->
 
                             <ul class="list-group list-group-unbordered mb-3">
