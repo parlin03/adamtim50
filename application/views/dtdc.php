@@ -29,9 +29,10 @@
                             <div class="info-box mb-12">
                                 <form action=" <?= base_url('dtdc/index')  ?>" method="POST">
                                     <div class="input-group mb-4">
-                                        <input type="text" class="form-control" placeholder="Search NIK..." name="keyword" autocomplete="off" autofocus>
+                                        <input type="text" class="form-control" placeholder="Masukkan NIK..." name="keyword" autocomplete="off" autofocus>
                                         <div class="input-group-append">
-                                            <input class="btn btn-primary" type="submit" name="submit">
+                                            <button type="submit" name="submit" class="btn btn-primary">Tambahkan</button>
+                                            <!-- <input class="btn btn-primary" type="submit" name="submit"> -->
                                         </div>
                                     </div>
                                 </form>
@@ -213,9 +214,9 @@
                                                                 <div class="modal-body">
                                                                     <input type="hidden" readonly value="<?= $m['id']; ?>" name="id" class="form-control">
                                                                     <div class="form-group row">
-                                                                        <label for="nik" class="col-sm-3 col-form-label">NIK</label>
+                                                                        <label for="noktp" class="col-sm-3 col-form-label">NIK</label>
                                                                         <div class="col-sm-9">
-                                                                            <input type="text" class="form-control" id="nik" name="nik" value="<?= $m['nik']; ?>" placeholder="NIK">
+                                                                            <input type="text" class="form-control" id="noktp" name="noktp" value="<?= $m['noktp']; ?>" placeholder="NIK">
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row">
@@ -283,81 +284,6 @@
 <!-- /.content-wrapper -->
 
 
-<!-- Modal Add New Dtdc -->
-<div class="modal fade" id="newDtdcModal" tabindex="-1" aria-labelledby="newDtdcModalLabel" aria-hidden="true">
-    <div class="modal-dialog  modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title" id="newDtdcModalLabel">Add New DTDC</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-            </div>
-            <form action="<?= base_url('dtdc/add'); ?>" method="POST">
-                <div class="modal-body">
-                    <div class="form-group row">
-                        <label for="nik" class="col-sm-3 col-form-label">NIK</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="nik" name="nik" placeholder="NIK">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="nama" class="col-sm-3 col-form-label">Nama</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="alamat" class="col-sm-3 col-form-label">Alamat</label>
-                        <div class="col-sm-9">
-                            <textarea class="form-control" rows="3" id="alamat" name="alamat" placeholder="Alamat ..."></textarea>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="kelurahan" class="col-sm-3 col-form-label">Kelurahan</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="kelurahan" name="kelurahan" placeholder="Kelurahan">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="kecamatan" class="col-sm-3 col-form-label">Kecamatan</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="kecamatan" name="kecamatan" placeholder="Kecamatan">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="nohp" class="col-sm-3 col-form-label">No Telpon</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="nohp" name="nohp" placeholder="No Telpon">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="radio" class="col-sm-3 col-form-label">Tanggapan</label>
-                        <div class="col-sm-9">
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="tanggapan" value="Bersedia">
-                                <label class="form-check-label">Bersedia Memilih</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="tanggapan" value="Tidak Bersedia">
-                                <label class="form-check-label">Tidak Bersedia Memilih</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="tanggapan" value="Ragu-ragu">
-                                <label class="form-check-label">Ragu-Ragu</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Add</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-<!-- End Modal Add New Dtdc -->
 
 <script>
     $('#image').change(function() {

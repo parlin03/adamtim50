@@ -78,19 +78,27 @@
                     <!-- Info Boxes Style 2 -->
                     <div class="info-box mb-3 bg-warning">
 
+                        <?php $tdaftar = 0; ?>
+                        <?php foreach ($TotalDaftar as $td) : ?>
+                            <?php $tdaftar += $td['totaldaftar']; ?>
+                        <?php endforeach; ?>
                         <div class="info-box-content">
                             <span class="info-box-text">Total Suara Terdaftar</span>
-                            <span class="info-box-number">0</span>
+                            <span class="info-box-number"><?= $tdaftar; ?></span>
                         </div>
                         <span class="info-box-icon"><i class="fas fa-edit"></i></span>
                         <!-- /.info-box-content -->
                     </div>
                     <!-- /.info-box -->
                     <div class="info-box mb-3 bg-success">
+                        <!-- <?php $tdpt = 0; ?> -->
+                        <?php foreach ($TotalDpt as $tp) : ?>
+                            <?php $tdpt += $tp['totaldpt']; ?>
+                        <?php endforeach; ?>
                         <div class="info-box-content">
                             <span class="info-box-text">Persentase Pencapaian</span>
                             <a href="<?= base_url(); ?>">
-                                <span class="info-box-number">00,00 %</span>
+                                <span class="info-box-number"><?= number_format(($tdaftar * 100 / $tdpt), 2); ?> %</span>
                             </a>
                         </div>
 
@@ -105,46 +113,37 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body p-0">
-                            <table class="table table-sm">
+                            <table class="table table-sm" border="1">
                                 <thead>
                                     <tr>
                                         <th style="width: 10px">#</th>
                                         <th>Kecamatan</th>
-                                        <th>Terdaftar</th>
+                                        <th class="text-center">Terdaftar</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1.</td>
-                                        <td>Panakkukang</td>
-                                        <td>0</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2.</td>
-                                        <td>Biringkanaya</td>
-                                        <td class="text-right">0</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3.</td>
-                                        <td>Manggala</td>
-                                        <td class="text-right">0</td>
-                                    </tr>
-                                    <tr>
-                                        <td>4.</td>
-                                        <td>Tamalanrea</td>
-                                        <td class="text-right">0</td>
-                                    </tr>
-                                    <tr>
-                                        <td>5.</td>
-                                        <td>Lainnya</td>
-                                        <td class="text-right">0</td>
-                                    </tr>
-                                </tbody>
+                                <?php $i = 1; ?>
+                                <?php $total = 0; ?>
+
+                                <?php foreach ($pencapaian as $cp) : ?>
+                                    <tbody>
+                                        <tr>
+                                            <th class="text-center" scope="row"><?= $i; ?>
+                                            </th>
+                                            <td><?= $cp['namakec']; ?></td>
+                                            <td class="text-center"><?= $cp['total']; ?></td>
+                                        </tr>
+
+
+                                    </tbody>
+                                    <?php $i++; ?>
+                                    <?php $total += $cp['total']; ?>
+                                <?php endforeach; ?>
                                 <tfoot>
                                     <tr>
 
                                         <th colspan="2" class="text-center">Total</th>
-                                        <th class="text-right">0</th>
+
+                                        <th class="text-center"><?= $total; ?></th>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -177,46 +176,26 @@
                             <table class="table table-hover text-nowrap" align="center">
 
                                 <tbody>
-                                    <tr>
-                                        <td>
-                                            <b>183 John Doe</b>
-                                            <br>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.
-                                            <br>11-7-2014
-                                            <!-- <span class="tag tag-success">Approved</span> -->
-                                        </td>
-                                        <td style="width: 200px">
-                                            <img class="img-fluid " src="<?= base_url('assets/img/profile/') . $user['image'] ?>">
+                                    <?php $i = 1; ?>
+                                    <?php foreach ($dtdc as $m) : ?>
 
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <b>219 Alexander Pierce</b>
-                                            <br>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.
-                                            <br>11-7-2014
-                                        </td>
-                                        <td style="width: 150px">
-                                            <div class="text-center">
-                                                <img class="profile-user-img img-fluid img-circle" src="<?= base_url('assets/img/profile/') . $user['image'] ?>" alt="User profile picture">
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <b>657 Bob Doe</b>
-                                            <br>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.
-                                            <BR>11-7-2014
-                                        </td>
-                                        <td style="width: 150px">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <b>175 Mike Doe</B>
-                                            <br>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.
-                                            <br>11-7-2014
-                                        </td>
-                                    </tr>
+                                        <tr>
+                                            <td>
+                                                <?= $m['noktp']; ?>
+                                                <br><b><?= $m['nama']; ?></b>
+                                                <br>TPS <?= $m['tps']; ?>
+                                                <br><?= $m['nohp']; ?>
+                                            </td>
+                                            <td style="width: 150px">
+                                                <a href="<?= base_url('assets/img/dtdc/') . $m['image']; ?>" class="portfolio-popup">
+                                                    <img src="<?= base_url('assets/img/dtdc/') . $m['image']; ?> " class="img-thumbnail" />
+                                                </a>
+                                            </td>
+                                        </tr>
+
+                                        <?php $i++; ?>
+                                    <?php endforeach; ?>
+
                                 </tbody>
                             </table>
                         </div>

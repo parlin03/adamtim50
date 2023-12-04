@@ -62,6 +62,7 @@ class Dtdc_model extends CI_Model
         $this->db->select('lks_dtdc.id, dpt.noktp, dpt.nama, dpt.alamat, namakel, namakec, rt, rw, tps, lks_dtdc.nohp, image');
         $this->db->from('dpt');
         $this->db->join('lks_dtdc', 'lks_dtdc.dpt_id = dpt.id');
+        $this->db->where('lks_dtdc.user_id', $this->session->userdata('user_id'));
         $this->db->order_by('lks_dtdc.id', 'DESC');
         $this->db->limit(5);
         $query = $this->db->get();
