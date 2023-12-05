@@ -56,7 +56,7 @@ class Dtdc extends CI_Controller
             $new_name                = $data['user']['id'] . time() . $_FILES["image"]['name'];
             $config['file_name']     = $new_name;
             $config['allowed_types'] = 'bmp|gif|jpeg|jpg|png|tiff|tiff|webp';
-            $config['max_size']      = '2048';
+            $config['max_size']      = '8192';
             $config['upload_path']   = './assets/img/dtdc/';
 
             $this->load->library('upload', $config);
@@ -110,7 +110,7 @@ class Dtdc extends CI_Controller
             $new_name                = $data['user']['id'] . time() . $_FILES["image"]['name'];
             $config['file_name']     = $new_name;
             $config['allowed_types'] = 'bmp|gif|jpeg|jpg|png|tiff|tiff|webp';
-            $config['max_size']      = '2048';
+            $config['max_size']      = '8192';
             $config['upload_path']   = './assets/img/dtdc/';
 
             $this->load->library('upload', $config);
