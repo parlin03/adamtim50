@@ -179,11 +179,7 @@
                         <div class="card-header">
                             <h3 class="card-title">Dukungan Terbaru</h3>
 
-                            <div class="card-tools">
-                                <div class="input-group input-group-sm" style="width: 150px;">
-                                    <a href="">Details</a>
-                                </div>
-                            </div>
+
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body table-responsive p-0">
