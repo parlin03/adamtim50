@@ -16,11 +16,11 @@ class Auth extends CI_Controller
             } elseif ($this->session->userdata('role_id') == 2) {
                 redirect('home');
             } elseif ($this->session->userdata('role_id') == 3) {
-                redirect('verifikasi');
+                redirect('home');
             } elseif ($this->session->userdata('role_id') == 4) {
                 // var_dump($this->session->userdata('username'));
                 // die;
-                redirect('verifikasi');
+                redirect('home');
             } else {
                 $this->session->unset_userdata('username');
                 $this->session->unset_userdata('email');
