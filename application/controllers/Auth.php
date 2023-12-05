@@ -75,9 +75,9 @@ class Auth extends CI_Controller
                     } elseif ($user['role_id'] == 2) {
                         redirect(base_url());
                     } elseif ($user['role_id'] == 3) {
-                        redirect('verifikasi');
+                        redirect(base_url());
                     } elseif ($user['role_id'] == 4) {
-                        redirect('verifikasi');
+                        redirect(base_url());
                     } else {
                         $this->session->unset_userdata('username');
                         $this->session->unset_userdata('email');
