@@ -56,7 +56,6 @@ class Dtdc extends CI_Controller
             $this->session->set_flashdata('error', "Data Gagal Di Tambahkan");
             redirect('dtdc');
         } else {
-
             $upload_image = $_FILES['image']['name'];
 
             if ($upload_image) {
@@ -105,29 +104,39 @@ class Dtdc extends CI_Controller
         $this->db->order_by('id', 'ASC');
         $data['dtdc'] = $this->db->get('lks_dtdc')->result_array(); //array banyak
 
-        $this->form_validation->set_rules('nik', 'Nik', 'required');
-        $this->form_validation->set_rules('nama', 'Nama', 'required');
-        $this->form_validation->set_rules('alamat', 'Alamat', 'required');
 
-        if ($this->form_validation->run() == false) {
-            $this->session->set_flashdata('error', "Data Gagal Di Tambahkan");
-            redirect('dtdc');
-        } else {
-            $data = [
-                'nik'       => $this->input->post('nik'),
-                'nama'      => $this->input->post('nama'),
-                'alamat'    => $this->input->post('alamat'),
-                'namakel' => $this->input->post('kelurahan'),
-                'namakec' => $this->input->post('kecamatan'),
-                'nohp'      => $this->input->post('nohp'),
-                'tanggapan' => $this->input->post('tanggapan'),
-                'user_id'   => $this->session->userdata('user_id')
-            ];
-            $this->db->where('id', $id);
-            $this->db->update('lks_dtdc', $data);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role ="alert">DTDC data edited!</div>');
-            redirect('dtdc');
+        $nohp = $this->input->post('nohp');
+        $old_image = $this->input->post('oldimage');
+
+        // $dpt_id = $this->input->post('dpt_id');
+
+        // cek jika da gambar yang akan diupload
+        $upload_image = $_FILES['image']['name'];
+
+        if ($upload_image) {
+            $new_name                = $data['user']['id'] . time() . $_FILES["image"]['name'];
+            $config['file_name']     = $new_name;
+            $config['allowed_types'] = 'bmp|gif|jpeg|jpg|png|tiff|tiff|webp';
+            $config['max_size']      = '2048';
+            $config['upload_path']   = './assets/img/dtdc/';
+
+            $this->load->library('upload', $config);
+            if ($this->upload->do_upload('image')) {
+                if ($old_image != 'default.jpg') {
+                    unlink(FCPATH . 'assets/img/dtdc/' . $old_image);
+                }
+
+                $this->db->set('image', $this->upload->data('file_name'));
+            } else {
+                echo $this->upload->display_errors();
+            }
         }
+
+        $this->db->set('nohp', $nohp);
+        $this->db->where('id', $id);
+        $this->db->update('lks_dtdc');
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Your Data has been updated! </div>');
+        redirect('dtdc');
     }
 
     public function delete($id)

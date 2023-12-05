@@ -10,9 +10,6 @@ class Dashboard_model extends CI_Model
 
     public function getMainGraph()
     {
-
-
-
         $this->db->select('count(id) as total, date_created');
         $this->db->from('lks_dtdc');
         $this->db->where('lks_dtdc.user_id', $this->session->userdata('user_id'));
@@ -24,19 +21,10 @@ class Dashboard_model extends CI_Model
             foreach ($query->result() as $data) {
                 $hasil[] = $data;
             }
-            // var_dump($hasil);
             return $hasil;
         }
-        //  else {
-        //     $hasil = [
-        //         'total'       => '0',
-        //         'date_created'   => '0'
-        //     ];
-        //     // $hasil[] = $data;
-        //     var_dump($hasil);
-        //     return $hasil;
-        // }
     }
+
     public function getTotalDaftar()
     {
         $this->db->select('count(lks_dtdc.noktp) as totaldaftar');
@@ -45,6 +33,7 @@ class Dashboard_model extends CI_Model
         $query = $this->db->get();
         return $query->result_array();
     }
+
     public function getTotalDpt()
     {
         $this->db->select('count(dpt.id) as totaldpt');
@@ -52,6 +41,7 @@ class Dashboard_model extends CI_Model
         $query = $this->db->get();
         return $query->result_array();
     }
+
     public function getPencapaian()
     {
         $this->db->select('lks_dtdc.id, dpt.noktp, dpt.nama, dpt.alamat, namakel, namakec, rt, rw, tps, count(lks_dtdc.noktp) as total');

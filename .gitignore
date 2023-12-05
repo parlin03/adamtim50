@@ -11,7 +11,8 @@ application/logs/*
 
 !application/*/.htaccess
 
-#assets/img/profile/*
+assets/img/profile/*
+assets/img/dtdc/*
 
 composer.lock
 

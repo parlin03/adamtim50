@@ -57,49 +57,49 @@
                                                     <div class="form-group row">
                                                         <label for="nik" class="col-sm-3 col-form-label">NIK</label>
                                                         <div class="col-sm-9">
-                                                            <input type="text" class="form-control" id="noktp" name="noktp" value="<?= $dptnik['noktp']; ?>" placeholder="NIK">
+                                                            <input disabled type="text" class="form-control" id="noktp" name="noktp" value="<?= $dptnik['noktp']; ?>" placeholder="NIK">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
                                                         <label for="nama" class="col-sm-3 col-form-label">Nama</label>
                                                         <div class="col-sm-9">
-                                                            <input type="text" class="form-control" id="nama" name="nama" value="<?= $dptnik['nama']; ?>" placeholder="Nama">
+                                                            <input disabled type="text" class="form-control" id="nama" name="nama" value="<?= $dptnik['nama']; ?>" placeholder="Nama">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
                                                         <label for="alamat" class="col-sm-3 col-form-label">Alamat</label>
                                                         <div class="col-sm-9">
-                                                            <textarea class="form-control" rows="3" id="alamat" name="alamat" placeholder="Alamat ..."><?= $dptnik['alamat']; ?></textarea>
+                                                            <textarea disabled class="form-control" rows="3" id="alamat" name="alamat" placeholder="Alamat ..."><?= $dptnik['alamat']; ?></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
                                                         <label for="kelurahan" class="col-sm-3 col-form-label">Kelurahan</label>
                                                         <div class="col-sm-9">
-                                                            <input type="text" class="form-control" id="kelurahan" name="kelurahan" value="<?= $dptnik['namakel']; ?>" placeholder="Kelurahan">
+                                                            <input disabled type="text" class="form-control" id="kelurahan" name="kelurahan" value="<?= $dptnik['namakel']; ?>" placeholder="Kelurahan">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
                                                         <label for="kecamatan" class="col-sm-3 col-form-label">Kecamatan</label>
                                                         <div class="col-sm-9">
-                                                            <input type="text" class="form-control" id="kecamatan" name="kecamatan" value="<?= $dptnik['namakec']; ?>" placeholder="Kecamatan">
+                                                            <input disabled type="text" class="form-control" id="kecamatan" name="kecamatan" value="<?= $dptnik['namakec']; ?>" placeholder="Kecamatan">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
-                                                        <label for="kecamatan" class="col-sm-3 col-form-label">RW</label>
+                                                        <label for="rw" class="col-sm-3 col-form-label">RW</label>
                                                         <div class="col-sm-9">
-                                                            <input type="text" class="form-control" id="kecamatan" name="kecamatan" value="<?= $dptnik['rw']; ?>" placeholder="Kecamatan">
+                                                            <input disabled type="text" class="form-control" id="rw" name="rw" value="<?= $dptnik['rw']; ?>" placeholder="rw">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
-                                                        <label for="kecamatan" class="col-sm-3 col-form-label">RT</label>
+                                                        <label for="rt" class="col-sm-3 col-form-label">RT</label>
                                                         <div class="col-sm-9">
-                                                            <input type="text" class="form-control" id="kecamatan" name="kecamatan" value="<?= $dptnik['rt']; ?>" placeholder="Kecamatan">
+                                                            <input disabled type="text" class="form-control" id="rt" name="rt" value="<?= $dptnik['rt']; ?>" placeholder="rt">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
-                                                        <label for="kecamatan" class="col-sm-3 col-form-label">TPS</label>
+                                                        <label for="tps" class="col-sm-3 col-form-label">TPS</label>
                                                         <div class="col-sm-9">
-                                                            <input type="text" class="form-control" id="kecamatan" name="kecamatan" value="<?= $dptnik['tps']; ?>" placeholder="Kecamatan">
+                                                            <input disabled type="text" class="form-control" id="tps" name="tps" value="<?= $dptnik['tps']; ?>" placeholder="Kecamatan">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
@@ -210,43 +210,62 @@
                                                                     <span aria-hidden="true">&times;</span>
                                                                 </button>
                                                             </div>
-                                                            <form action="<?= base_url('dtdc/edit/') . $m['id']; ?>" method="POST">
+                                                            <form action="<?= base_url('dtdc/edit/') . $m['id']; ?>" method="POST" enctype="multipart/form-data">
                                                                 <div class="modal-body">
                                                                     <input type="hidden" readonly value="<?= $m['id']; ?>" name="id" class="form-control">
+                                                                    <!-- <input readonly value="<?= $m['image']; ?>" name="id" class="form-control"> -->
                                                                     <div class="form-group row">
                                                                         <label for="noktp" class="col-sm-3 col-form-label">NIK</label>
                                                                         <div class="col-sm-9">
-                                                                            <input type="text" class="form-control" id="noktp" name="noktp" value="<?= $m['noktp']; ?>" placeholder="NIK">
+                                                                            <input type="text" disabled class="form-control" id="noktp" name="noktp" value="<?= $m['noktp']; ?>" placeholder="NIK">
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row">
                                                                         <label for="nama" class="col-sm-3 col-form-label">Nama</label>
                                                                         <div class="col-sm-9">
-                                                                            <input type="text" class="form-control" id="nama" name="nama" value="<?= $m['nama']; ?>" placeholder="Nama">
+                                                                            <input disabled type="text" class="form-control" id="nama" name="nama" value="<?= $m['nama']; ?>" placeholder="Nama">
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row">
                                                                         <label for="alamat" class="col-sm-3 col-form-label">Alamat</label>
                                                                         <div class="col-sm-9">
-                                                                            <textarea class="form-control" rows="3" id="alamat" name="alamat" placeholder="Alamat ..."><?= $m['alamat']; ?></textarea>
+                                                                            <textarea disabled class="form-control" rows="3" id="alamat" name="alamat" placeholder="Alamat ..."><?= $m['alamat']; ?> RT. <?= $m['rt']; ?> RW. <?= $m['rt']; ?> KEL. <?= $m['namakel']; ?> KEC. <?= $m['namakec']; ?></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!--  -->
+                                                                    <div class="form-group row">
+                                                                        <label for="tps" class="col-sm-3 col-form-label">TPS</label>
+                                                                        <div class="col-sm-9">
+                                                                            <input disabled type="text" class="form-control" id="tps" name="tps" value="<?= $m['tps']; ?>" placeholder="rw">
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row">
-                                                                        <label for="kelurahan" class="col-sm-3 col-form-label">Kelurahan</label>
-                                                                        <div class="col-sm-9">
-                                                                            <input type="text" class="form-control" id="kelurahan" name="kelurahan" value="<?= $m['namakel']; ?>" placeholder="Kelurahan">
-                                                                        </div>
                                                                     </div>
                                                                     <div class="form-group row">
-                                                                        <label for="kecamatan" class="col-sm-3 col-form-label">Kecamatan</label>
-                                                                        <div class="col-sm-9">
-                                                                            <input type="text" class="form-control" id="kecamatan" name="kecamatan" value="<?= $m['namakec']; ?>" placeholder="Kecamatan">
-                                                                        </div>
                                                                     </div>
                                                                     <div class="form-group row">
                                                                         <label for="nohp" class="col-sm-3 col-form-label">No Telpon</label>
                                                                         <div class="col-sm-9">
                                                                             <input type="text" class="form-control" id="nohp" name="nohp" value="<?= $m['nohp']; ?>" placeholder="No Telpon">
+                                                                            <input type="hidden" class="form-control" id="oldimage" name="oldimage" value="<?= $m['image']; ?>" placeholder="">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <div class="col-sm-2">Picture</div>
+                                                                        <div class="col-sm-10">
+                                                                            <div class="row">
+                                                                                <div class="col-sm-3">
+                                                                                    <span class="info-box-icon bg-warning elevation-1">
+                                                                                        <img src="<?= base_url('assets/img/dtdc/') . $m['image']; ?> " class="img-thumbnail" />
+                                                                                    </span>
+                                                                                </div>
+                                                                                <div class="col-sm-9">
+                                                                                    <div class="custom-file">
+                                                                                        <input type="file" class="custom-file-input" id="image" name="image" placeholder="" />
+                                                                                        <label class="custom-file-label" for="image">Choose file (Max 2MB)</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
 
