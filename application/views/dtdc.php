@@ -54,6 +54,7 @@
                                             <form action="<?= base_url('dtdc/add'); ?>" method="POST" enctype="multipart/form-data">
                                                 <div class="modal-body">
                                                     <input type="hidden" class="form-control" id="dpt_id" name="dpt_id" value="<?= $dptnik['id']; ?>" placeholder="NIK">
+                                                    <input type="hidden" class="form-control" id="noktp" name="noktp" value="<?= $dptnik['noktp']; ?>" placeholder="NIK">
                                                     <div class="form-group row">
                                                         <label for="nik" class="col-sm-3 col-form-label">NIK</label>
                                                         <div class="col-sm-9">

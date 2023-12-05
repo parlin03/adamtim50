@@ -48,47 +48,40 @@ class Dtdc extends CI_Controller
         $this->form_validation->set_rules('dpt_id', 'Dpt_id', 'required|is_unique[user.email]', [
             'is_unique' => 'This NIK has already registered'
         ]);
-        $this->form_validation->set_rules('noktp', 'Noktp', 'required');
-        $this->form_validation->set_rules('nama', 'Nama', 'required');
-        $this->form_validation->set_rules('alamat', 'Alamat', 'required');
 
-        if ($this->form_validation->run() == false) {
-            $this->session->set_flashdata('error', "Data Gagal Di Tambahkan");
-            redirect('dtdc');
-        } else {
-            $upload_image = $_FILES['image']['name'];
 
-            if ($upload_image) {
-                $new_name                = $data['user']['id'] . time() . $_FILES["image"]['name'];
-                $config['file_name']     = $new_name;
-                $config['allowed_types'] = 'bmp|gif|jpeg|jpg|png|tiff|tiff|webp';
-                $config['max_size']      = '2048';
-                $config['upload_path']   = './assets/img/dtdc/';
+        $upload_image = $_FILES['image']['name'];
 
-                $this->load->library('upload', $config);
-                if ($this->upload->do_upload('image')) {
-                    // $old_image = $data['user']['image'];
-                    // if ($old_image != 'default.jpg') {
-                    //     unlink(FCPATH . 'assets/img/dtdc/' . $old_image);
-                    // }
+        if ($upload_image) {
+            $new_name                = $data['user']['id'] . time() . $_FILES["image"]['name'];
+            $config['file_name']     = $new_name;
+            $config['allowed_types'] = 'bmp|gif|jpeg|jpg|png|tiff|tiff|webp';
+            $config['max_size']      = '2048';
+            $config['upload_path']   = './assets/img/dtdc/';
 
-                    $datanew = [
-                        'dpt_id'       => $this->input->post('dpt_id'),
-                        'noktp'       => $this->input->post('noktp'),
-                        'nohp'      => $this->input->post('nohp'),
-                        'image' =>  $this->upload->data('file_name'),
-                        'user_id'   => $this->session->userdata('user_id'),
-                        'date_created'   => date("Y-m-d")
+            $this->load->library('upload', $config);
+            if ($this->upload->do_upload('image')) {
+                // $old_image = $data['user']['image'];
+                // if ($old_image != 'default.jpg') {
+                //     unlink(FCPATH . 'assets/img/dtdc/' . $old_image);
+                // }
 
-                    ];
-                    $this->db->insert('lks_dtdc', $datanew);
-                    $this->session->set_flashdata('message', '<div class="alert alert-success" role ="alert">New DTDC added!</div>');
-                    redirect('dtdc');
-                    // $new_image = $this->upload->data('file_name');
-                    // $this->db->set('image', $new_image);
-                } else {
-                    echo $this->upload->display_errors();
-                }
+                $datanew = [
+                    'dpt_id'       => $this->input->post('dpt_id'),
+                    'noktp'       => $this->input->post('noktp'),
+                    'nohp'      => $this->input->post('nohp'),
+                    'image' =>  $this->upload->data('file_name'),
+                    'user_id'   => $this->session->userdata('user_id'),
+                    'date_created'   => date("Y-m-d")
+
+                ];
+                $this->db->insert('lks_dtdc', $datanew);
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role ="alert">New DTDC added!</div>');
+                redirect('dtdc');
+                // $new_image = $this->upload->data('file_name');
+                // $this->db->set('image', $new_image);
+            } else {
+                echo $this->upload->display_errors();
             }
         }
     }
