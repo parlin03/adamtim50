@@ -20,6 +20,7 @@ class Home extends CI_Controller
         $data['title'] = 'Dashboard';
         $data['user'] = $this->db->get_where('user', ['id' => $this->session->userdata('user_id')])->row_array();
 
+        $data['grafik'] = $this->dashboard->getMainGraph();
         $data['TotalDaftar'] = $this->dashboard->getTotalDaftar(); //single array
         $data['TotalDpt'] = $this->dashboard->getTotalDpt(); //array banyak
         $data['pencapaian'] = $this->dashboard->getPencapaian(); //array banyak

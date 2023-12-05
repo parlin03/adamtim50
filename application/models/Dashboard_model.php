@@ -8,19 +8,24 @@ class Dashboard_model extends CI_Model
         $this->load->database();
     }
 
-    public function mainGraph()
+    public function getMainGraph()
     {
-        // $query ="SELECT namakec, sum(total) as total FROM dpt group by namakec order by iddesa"
-        $query = "SELECT `namakec`, count(idkec) as total FROM dpt group by `namakec` order by `iddesa`";
 
-        return $this->db->query($query)->result_array();
-    }
-    public function graphPanakukkang()
-    {
-        // $query ="SELECT namakel, sum(total) as total FROM age where namakec='panakukkang' group by namakel order by iddesa""
-        $query    = "SELECT namakel, count(iddesa) as total FROM dpt where namakec='panakukkang' group by namakel order by iddesa";
 
-        return $this->db->query($query)->result_array();
+
+        $this->db->select('count(id) as total, date_created');
+        $this->db->from('lks_dtdc');
+        $this->db->where('lks_dtdc.user_id', $this->session->userdata('user_id'));
+        $this->db->group_by('date_created');
+        $this->db->order_by('date_created', 'ASC');
+
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            foreach ($query->result() as $data) {
+                $hasil[] = $data;
+            }
+            return $hasil;
+        }
     }
     public function getTotalDaftar()
     {
