@@ -55,13 +55,14 @@
                             </div>
                             <!-- /.d-flex -->
                             <?php
-                            /* Mengambil query report*/
-                            foreach ($grafik as $result) {
-                                $date[] = $result->date_created; //ambil bulan
-                                $value[] = (float) $result->total; //ambil nilai
+                            if (!empty($grafik)) {
+                                /* Mengambil query report*/
+                                foreach ($grafik as $result) {
+                                    $date[] = $result->date_created; //ambil bulan
+                                    $value[] = (float) $result->total; //ambil nilai
+                                }
+                                /* end mengambil query*/
                             }
-                            /* end mengambil query*/
-
                             ?>
 
                             <!-- Load chart dengan menggunakan ID -->

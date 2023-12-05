@@ -24,8 +24,18 @@ class Dashboard_model extends CI_Model
             foreach ($query->result() as $data) {
                 $hasil[] = $data;
             }
+            // var_dump($hasil);
             return $hasil;
         }
+        //  else {
+        //     $hasil = [
+        //         'total'       => '0',
+        //         'date_created'   => '0'
+        //     ];
+        //     // $hasil[] = $data;
+        //     var_dump($hasil);
+        //     return $hasil;
+        // }
     }
     public function getTotalDaftar()
     {
