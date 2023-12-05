@@ -17,7 +17,7 @@ class Dtdc extends CI_Controller
     }
     function index()
     {
-        $data['title'] = 'Door to Door Campaign';
+        $data['title'] = 'Jagai Maktim';
         $data['user'] = $this->db->get_where('user', ['id' => $this->session->userdata('user_id')])->row_array();
         $this->db->where('user_id', $this->session->userdata('user_id'));
         $data['dtdc'] = $this->m_dtdc->getLksDtdc(); //array banyak
