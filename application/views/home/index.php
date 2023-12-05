@@ -196,7 +196,8 @@
                                             <td>
                                                 <?= $m['noktp']; ?>
                                                 <br><b><?= $m['nama']; ?></b>
-                                                <br>TPS <?= $m['tps']; ?>
+                                                <br>Kec. <?= $m['namakec']; ?> Kel. <?= $m['namakel']; ?>
+                                                <br>RT <?= $m['rt']; ?> RW <?= $m['rw']; ?> TPS <?= $m['tps']; ?>
                                                 <br><?= $m['nohp']; ?>
                                             </td>
                                             <td style="width: 150px">
