@@ -100,7 +100,7 @@
                             <span class="info-box-text">Total Suara Terdaftar</span>
                             <span class="info-box-number"><?= $tdaftar; ?></span>
                         </div>
-                        <span class="info-box-icon"><i class="fas fa-edit"></i></span>
+                        <span class="info-box-icon"><a href="<?= base_url('details'); ?>"><i class="fas fa-edit"></i></a></span>
                         <!-- /.info-box-content -->
                     </div>
                     <!-- /.info-box -->

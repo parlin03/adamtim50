@@ -3,6 +3,7 @@
      <div class="container">
          <a href="<?= base_url('home'); ?>" class="navbar-brand">
              <!-- <img src="<?= base_url('assets/img/icon.png') ?>" class="brand-image " style="opacity: .8"> -->
+             <span class="info-box-icon"><i class="fas fa-home"></i></span>
              <span class="brand-text font-weight-light">Pasukan Timur</span>
          </a>
 

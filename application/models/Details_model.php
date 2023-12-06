@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Verifikasi_model extends CI_Model
+class Details_model extends CI_Model
 {
     public function rules()
     {
@@ -15,14 +15,16 @@ class Verifikasi_model extends CI_Model
     }
     function getKecamatan()
     {
-        $response = array();
 
-        // Select record
-        $this->db->select('*');
-        $q = $this->db->get('kec');
-        $response = $q->result_array();
-
-        return $response;
+        $this->db->select('lks_dtdc.id, dpt.noktp, dpt.nama, dpt.alamat, dpt.namakel, dpt.namakec, dpt.rt, dpt.rw, dpt.tps, lks_dtdc.nohp, image');
+        $this->db->from('dpt');
+        $this->db->join('lks_dtdc', 'lks_dtdc.dpt_id = dpt.id');
+        $this->db->where('lks_dtdc.user_id', $this->session->userdata('user_id'));
+        $this->db->order_by('lks_dtdc.id', 'DESC');
+        $query = $this->db->get();
+        // var_dump($query);
+        // die;
+        return $query->result_array();
     }
 
     // function getKelurahan($postData)

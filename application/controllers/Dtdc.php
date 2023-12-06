@@ -132,12 +132,13 @@ class Dtdc extends CI_Controller
         redirect('dtdc');
     }
 
-    public function delete($id)
+    public function delete($id = null, $image = null)
     {
         if ($id == "") {
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role ="alert">Data Anda Gagal Di Hapus');
             redirect('dtdc');
         } else {
+            unlink(FCPATH . 'assets/img/dtdc/' . $image);
             $this->db->where('id', $id);
             $this->db->delete('lks_dtdc');
             $this->session->set_flashdata('message', '<div class="alert alert-success" role ="alert">Data Berhasil Dihapus');
