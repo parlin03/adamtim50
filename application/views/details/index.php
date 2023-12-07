@@ -56,10 +56,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php $i = 1;
-                                    // var_dump($kec);
-                                    // die;
-                                    ?>
+                                    <?php $i = 1; ?>
 
                                     <?php foreach ($kec as $m) : ?>
 
