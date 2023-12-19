@@ -15,7 +15,7 @@
              </li> -->
              <!-- Nav Item - User Information -->
              <?php
-                $date = strtotime("February 14, 2024 8:00 AM");
+                $date = strtotime("February 14, 2024 4:01 PM");
                 $remaining = $date - time();
                 $days_remaining = floor($remaining / 86400);
                 $hours_remaining = floor(($remaining % 86400) / 3600);
