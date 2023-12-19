@@ -14,6 +14,15 @@
                  <a href="<?= base_url('dtdc'); ?>" class="nav-link">DTDC</a>
              </li> -->
              <!-- Nav Item - User Information -->
+             <?php
+                $date = strtotime("February 14, 2024 8:00 AM");
+                $remaining = $date - time();
+                $days_remaining = floor($remaining / 86400);
+                $hours_remaining = floor(($remaining % 86400) / 3600);
+                ?>
+             <li class="nav-item text-danger">
+                 <h3> <b><?= $days_remaining; ?></b> hari lagi..!!!</h3>
+             </li>
              <li class="nav-item dropdown">
                  <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                      <img src="<?= base_url('assets/img/profile/') . $user['image'] ?>" class="img-circle elevation-2" alt="User Image" style="height:24px;width:24px">
