@@ -42,14 +42,7 @@
                                 <thead class="text-center text-dark">
                                     <tr>
                                         <TH>#</th>
-                                        <TH>NIK</th>
-                                        <TH>Nama</th>
-                                        <TH>Alamat</th>
-                                        <TH>Kelurahan</th>
-                                        <TH>Kecamatan</th>
-                                        <TH>RT</th>
-                                        <TH>RW</th>
-                                        <TH>TPS</th>
+                                        <TH>DPT</th>
                                         <TH>No Telpon</th>
                                         <TH>Foto KTP</th>
                                         <TH>Aksi</th>
@@ -63,14 +56,15 @@
                                         <tr>
                                             <th class="text-center" scope="row"><?= $i; ?>
                                             </th>
-                                            <td><?= $m['noktp']; ?></td>
-                                            <td><?= $m['nama']; ?></td>
-                                            <td style="width: 200px"><?= $m['alamat']; ?></td>
-                                            <td><?= $m['namakel']; ?></td>
-                                            <td><?= $m['namakec']; ?></td>
-                                            <td><?= $m['rt']; ?></td>
-                                            <td><?= $m['rw']; ?></td>
-                                            <td><?= $m['tps']; ?></td>
+                                            <td><b><?= $m['noktp']; ?></b>
+                                                <br><b><?= $m['nama']; ?></b>
+                                                <br><?= $m['alamat']; ?>
+                                                <br>Kel. <?= $m['namakel']; ?>
+                                                Kec. <?= $m['namakec']; ?>
+                                                RT. <?= $m['rt']; ?>
+                                                RW. <?= $m['rw']; ?>
+                                                <b>TPS. <?= $m['tps']; ?></b>
+                                            </td>
                                             <td><?= $m['nohp']; ?></td>
                                             <td style="width: 150px">
                                                 <a href="<?= base_url('assets/img/dtdc/') . $m['image']; ?>" class="portfolio-popup">
