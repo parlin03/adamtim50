@@ -104,6 +104,25 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
+                                                        <label for="program" class="col-sm-3 col-form-label">Program</label>
+                                                        <div class="col-sm-9">
+                                                            <select class="form-control" id="program" name="program">
+                                                                <option value='Beasiswa PIP'>Beasiswa PIP</option>
+                                                                <option value='Beasiswa KIP'>Beasiswa KIP</option>
+                                                                <option value='BPUM'>BPUM</option>
+                                                                <option value='Bedah Rumah'>Bedah Rumah</option>
+                                                                <option value='Pelayanan'>Pelayanan</option>
+                                                                <option value='Relawan Doa Ibu'>Relawan Doa Ibu</option>
+                                                                <option value='Tandem Paman'>Tandem Paman</option>
+                                                                <option value='Tandem Tabir'>Tandem Tabir</option>
+                                                                <option value='Tim 50'>Tim 50</option>
+                                                                <option value='Tim 25'>Tim 25</option>
+                                                                <option value='Tim 10'>Tim 10</option>
+                                                                <option value='Pasukan Timur'>Pasukan Timur</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
                                                         <label for="nohp" class="col-sm-3 col-form-label">No Telpon</label>
                                                         <div class="col-sm-9">
                                                             <input type="text" class="form-control" id="nohp" name="nohp" value="<?= $dptnik['nohp']; ?>" placeholder="No Telpon">
@@ -169,7 +188,9 @@
                                         <thead class="text-center text-dark">
                                             <tr>
                                                 <TH>#</th>
-                                                <TH>Nama</th>
+                                                <TH>DPT</th>
+                                                <TH>Program</th>
+                                                <TH>No Telpon</th>
                                                 <TH>KTP</th>
                                                 <TH>Aksi</th>
                                             </tr>
@@ -185,8 +206,9 @@
                                                     <td><?= $m['noktp']; ?>
                                                         <br><b><?= $m['nama']; ?></b>
                                                         <br>TPS <?= $m['tps']; ?>
-                                                        <br><?= $m['nohp']; ?>
                                                     </td>
+                                                    <td><?= $m['program']; ?></td>
+                                                    <td><?= $m['nohp']; ?></td>
                                                     <td style="width: 150px">
                                                         <a href="<?= base_url('assets/img/dtdc/') . $m['image']; ?>" class="portfolio-popup">
                                                             <img src="<?= base_url('assets/img/dtdc/') . $m['image']; ?> " class="img-thumbnail" />

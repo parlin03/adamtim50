@@ -49,6 +49,7 @@ class Dtdc extends CI_Controller
             'is_unique' => 'This NIK has already registered'
         ]);
 
+        // var_dump($this->input->post('program'));
 
         $upload_image = $_FILES['image']['name'];
 
@@ -70,6 +71,7 @@ class Dtdc extends CI_Controller
                     'dpt_id'       => $this->input->post('dpt_id'),
                     'noktp'       => $this->input->post('noktp'),
                     'nohp'      => $this->input->post('nohp'),
+                    'program'      => $this->input->post('program'),
                     'image' =>  $this->upload->data('file_name'),
                     'user_id'   => $this->session->userdata('user_id'),
                     'date_created'   => date("Y-m-d")

@@ -39,10 +39,11 @@
                         </div>
                         <div class="card-body table-responsive p-0">
                             <table class="table table-hover text-nowrap" align="center">
-                                <thead class="text-center text-dark">
+                                <thead class=" text-dark">
                                     <tr>
                                         <TH>#</th>
                                         <TH>DPT</th>
+                                        <TH>Program</th>
                                         <TH>No Telpon</th>
                                         <TH>Foto KTP</th>
                                         <TH>Aksi</th>
@@ -65,6 +66,7 @@
                                                 RW. <?= $m['rw']; ?>
                                                 <b>TPS. <?= $m['tps']; ?></b>
                                             </td>
+                                            <td><?= $m['program']; ?></td>
                                             <td><?= $m['nohp']; ?></td>
                                             <td style="width: 150px">
                                                 <a href="<?= base_url('assets/img/dtdc/') . $m['image']; ?>" class="portfolio-popup">
@@ -120,8 +122,24 @@
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                            </div>
-                                                            <div class="form-group row">
+                                                                <label for="program" class="col-sm-3 col-form-label">Program</label>
+                                                                <div class="col-sm-9">
+                                                                    <select class="form-control" id="program" name="program">
+                                                                        <option value='Beasiswa PIP' <?php echo ($m['program'] == 'Beasiswa PIP') ? 'selected' : ''; ?>>Beasiswa PIP</option>
+                                                                        <option value='Beasiswa KIP' <?php echo ($m['program'] == 'Beasiswa KIP') ? 'selected' : ''; ?>>Beasiswa KIP</option>
+                                                                        <option value='BPUM' <?php echo ($m['program'] == 'BPUM') ? 'selected' : ''; ?>>BPUM</option>
+                                                                        <option value='Bedah Rumah' <?php echo ($m['program'] == 'Bedah Rumah') ? 'selected' : ''; ?>>Bedah Rumah</option>
+                                                                        <option value='Pelayanan' <?php echo ($m['program'] == 'Pelayanan') ? 'selected' : ''; ?>>Pelayanan</option>
+                                                                        <option value='Relawan Doa Ibu' <?php echo ($m['program'] == 'Relawan Doa Ibu') ? 'selected' : ''; ?>>Relawan Doa Ibu</option>
+                                                                        <option value='Tandem Paman' <?php echo ($m['program'] == 'Tandem Paman') ? 'selected' : ''; ?>>Tandem Paman</option>
+                                                                        <option value='Tandem Tabir' <?php echo ($m['program'] == 'Tandem Tabir') ? 'selected' : ''; ?>>Tandem Tabir</option>
+                                                                        <option value='Tim 50' <?php echo ($m['program'] == 'Tim 50') ? 'selected' : ''; ?>>Tim 50</option>
+                                                                        <option value='Tim 25' <?php echo ($m['program'] == 'Tim 25') ? 'selected' : ''; ?>>Tim 25</option>
+                                                                        <option value='Tim 10' <?php echo ($m['program'] == 'Tim 10') ? 'selected' : ''; ?>>Tim 10</option>
+                                                                        <option value='Pasukan Timur' <?php echo ($m['program'] == 'Pasukan Timur') ? 'selected' : ''; ?>>Pasukan Timur</option>
+
+                                                                    </select>
+                                                                </div>
                                                             </div>
                                                             <div class="form-group row">
                                                                 <label for="nohp" class="col-sm-3 col-form-label">No Telpon</label>
