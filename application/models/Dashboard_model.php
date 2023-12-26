@@ -55,7 +55,7 @@ class Dashboard_model extends CI_Model
 
     public function getLksDtdc()
     {
-        $this->db->select('lks_dtdc.id, dpt.noktp, dpt.nama, dpt.alamat, namakel, namakec, rt, rw, tps, lks_dtdc.nohp, image');
+        $this->db->select('lks_dtdc.id, dpt.noktp, dpt.nama, dpt.alamat, namakel, namakec, rt, rw, tps, lks_dtdc.program, lks_dtdc.nohp, image');
         $this->db->from('dpt');
         $this->db->join('lks_dtdc', 'lks_dtdc.dpt_id = dpt.id');
         $this->db->where('lks_dtdc.user_id', $this->session->userdata('user_id'));

@@ -197,6 +197,7 @@
                                                 <br>RT <?= $m['rt']; ?> RW <?= $m['rw']; ?> TPS <?= $m['tps']; ?>
                                                 <br><?= $m['nohp']; ?>
                                             </td>
+                                            <td><?= $m['program']; ?></td>
                                             <td style="width: 150px">
                                                 <a href="<?= base_url('assets/img/dtdc/') . $m['image']; ?>" class="portfolio-popup">
                                                     <img src="<?= base_url('assets/img/dtdc/') . $m['image']; ?> " class="img-thumbnail" />
