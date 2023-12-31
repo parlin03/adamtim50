@@ -24,12 +24,26 @@ class Dtdc extends CI_Controller
 
         $data['keyword'] = $this->input->post('keyword');
         $this->load->model('Dtdc_model');
-        $check = $this->db->get_where('lks_dtdc', ['noktp' => $data['keyword']]);
-        if ($check->num_rows() > 0) {
-            $this->session->set_flashdata('error', "Data NIK Terdaftar");
+        if ($data['keyword'] == 0) {
+            $this->session->set_flashdata('message1', '<div class="alert alert-warning" role ="alert">Masukkan NIK dengan Benar</div>');
             $data['search_result'] = '';
         } else {
-            $data['search_result'] = $this->Dtdc_model->search($data['keyword']);
+            $check = $this->db->get_where('lks_dtdc', ['noktp' => $data['keyword']]);
+            if ($check->num_rows() > 0) {
+                $pic = $this->db->get_where('user', ['id' => $check->row()->user_id]);
+                $this->session->set_flashdata('message1', '<div class="alert alert-danger" role ="alert">Data NIK <b>' . $data['keyword'] . '</b> Sudah Terdaftar oleh <b>' .  ucwords($pic->row()->name) . '</b></div>');
+
+                $data['search_result'] = '';
+            } else {
+                $checkdpt = $this->db->get_where('lks_dtdc', ['noktp' => $data['keyword']]);
+                if ($checkdpt->num_rows() > 0) {
+
+                    $data['search_result'] = $this->Dtdc_model->search($data['keyword']);
+                } else {
+                    $this->session->set_flashdata('message1', '<div class="alert alert-danger" role ="alert">Data NIK <b>' . $data['keyword'] . '</b> Tidak Ditemukan. Segera daftarkan NIK <b>' . $data['keyword'] . '</b> ke KPU untuk mendapatkan nomor TPS</div>');
+                    $data['search_result'] = '';
+                }
+            }
         }
         $this->load->view('templates/header', $data);
         // $this->load->view('templates/sidebar', $data);

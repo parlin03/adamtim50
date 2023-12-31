@@ -23,7 +23,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-
+                    <?= $this->session->flashdata('message1'); ?>
                     <div class="card-body">
                         <div class="row justify-content-center">
                             <div class="info-box mb-12">
@@ -153,13 +153,7 @@
                         </div>
                     <?php endforeach ?>
                 </div>
-            <?php else : ?>
-                <?php if ($keyword) : ?>
-                    <div style="height: 400px;">
-                        <h1>NIK sudah terdaftar / Tidak ada yang ditemukan</h1>
-                        <p>Coba dengan NIK yang lain</p>
-                    </div>
-                <?php endif ?>
+
             <?php endif ?>
         </div>
 

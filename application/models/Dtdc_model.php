@@ -79,6 +79,11 @@ class Dtdc_model extends CI_Model
 
         return $query->result_array();
     }
+    public function existDpt()
+    {
+        $query = $this->db->query("SELECT EXISTS(SELECT noktp FROM `dpt` WHERE `noktp`= '7303011505860004') as EXIST;")->row();
+        return $query->EXIST;
+    }
     //menampilkan data mahasiswa berdasarkan id mahasiswa
     //menyimpan data mahasiswa
     public function save()
