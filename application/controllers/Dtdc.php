@@ -35,9 +35,9 @@ class Dtdc extends CI_Controller
 
                 $data['search_result'] = '';
             } else {
-                $checkdpt = $this->db->get_where('lks_dtdc', ['noktp' => $data['keyword']]);
+                $checkdpt = $this->db->get_where('dpt', ['noktp' => $data['keyword']]);
                 if ($checkdpt->num_rows() > 0) {
-
+                    $this->session->set_flashdata('message1', '<div class="alert alert-success" role ="alert">Data NIK <b>' . $data['keyword'] . '</b> Ditemukan. Segera Perbaharui Data</div>');
                     $data['search_result'] = $this->Dtdc_model->search($data['keyword']);
                 } else {
                     $this->session->set_flashdata('message1', '<div class="alert alert-danger" role ="alert">Data NIK <b>' . $data['keyword'] . '</b> Tidak Ditemukan. Segera daftarkan NIK <b>' . $data['keyword'] . '</b> ke KPU untuk mendapatkan nomor TPS</div>');
