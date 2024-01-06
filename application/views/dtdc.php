@@ -131,11 +131,9 @@
                                                     <div class="form-group row">
                                                         <label for="radio" class="col-sm-3 col-form-label">Foto KTP</label>
                                                         <div class="col-sm-9">
-                                                            <div class="custom-file">
-                                                                <input type="file" class="custom-file-input" id="image" name="image" placeholder="" />
 
-                                                                <label class="custom-file-label" for="image">Choose file (Max 8MB)</label>
-                                                            </div>
+                                                            <input type="file" class="form-control mb-1" id="image" name="image" accept=".bmp,.gif,.jpeg,.jpg,.png,.tiff,.tiff,.webp">
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -268,21 +266,16 @@
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row">
-                                                                        <div class="col-sm-2">Picture</div>
-                                                                        <div class="col-sm-10">
-                                                                            <div class="row">
-                                                                                <div class="col-sm-3">
-                                                                                    <span class="info-box-icon bg-warning elevation-1">
-                                                                                        <img src="<?= base_url('assets/img/dtdc/') . $m['image']; ?> " class="img-thumbnail" />
-                                                                                    </span>
-                                                                                </div>
-                                                                                <div class="col-sm-9">
-                                                                                    <div class="custom-file">
-                                                                                        <input type="file" class="custom-file-input" id="image" name="image" placeholder="" />
-                                                                                        <label class="custom-file-label" for="image">Choose file (Max 8MB)</label>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
+                                                                        <label for="image" class="col-sm-3 col-form-label">Picture</label>
+                                                                        <div class="col-sm-9">
+                                                                            <input type="file" class="form-control mb-1" id="image" name="image" accept=".bmp,.gif,.jpeg,.jpg,.png,.tiff,.tiff,.webp">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <div class="col-sm-12">
+                                                                            <span class="info-box-icon bg-warning elevation-1">
+                                                                                <img src="<?= base_url('assets/img/dtdc/') . $m['image']; ?> " class="img-thumbnail" />
+                                                                            </span>
                                                                         </div>
                                                                     </div>
 

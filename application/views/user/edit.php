@@ -45,26 +45,23 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <div class="col-sm-2">Picture</div>
-                                        <div class="col-sm-10">
-                                            <div class="row">
-                                                <div class="col-sm-3">
-                                                    <span class="info-box-icon bg-warning elevation-1">
-                                                        <img src="<?= base_url('assets/img/profile/') . $user['image']; ?> " class="img-thumbnail" />
-                                                    </span>
-                                                </div>
-                                                <div class="col-sm-9">
-                                                    <div class="custom-file">
-                                                        <input type="file" class="custom-file-input" id="image" name="image" placeholder="" />
-                                                        <label class="custom-file-label" for="image">Choose file (Max 2MB)</label>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                        <label for="name" class="col-sm-3 col-form-label">Picture</label>
+                                        <div class="col-sm-9">
+                                            <!-- <div class="custom-file"> -->
+                                            <!-- <input name="uploadFile" class="form-control mb-1" type="file" accept=".xls,.xlsx,.csv" required> -->
+
+                                            <input type="file" class="form-control mb-1" id="image" name="image" accept=".bmp,.gif,.jpeg,.jpg,.png,.tiff,.tiff,.webp">
+
+                                            <!-- </div> -->
                                         </div>
                                     </div>
-                                    <!-- /.info-box-content -->
-                                    <div class="form-group row ">
-                                        <div class="col-sm-10"></div>
+                                    <div class="form-group row">
+                                        <div class="col-sm-3">
+                                            <span class="info-box-icon bg-warning elevation-1">
+                                                <img src="<?= base_url('assets/img/profile/') . $user['image']; ?> " class="img-thumbnail" />
+                                            </span>
+                                        </div>
+
                                         <div class="col-sm-2">
                                             <button type="submit" class="btn btn-primary">Save</button>
                                         </div>
