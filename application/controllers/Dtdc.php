@@ -113,7 +113,7 @@ class Dtdc extends CI_Controller
         $this->db->order_by('id', 'ASC');
         $data['dtdc'] = $this->db->get('lks_dtdc')->result_array(); //array banyak
 
-
+        $program = $this->input->post('program');
         $nohp = $this->input->post('nohp');
         $old_image = $this->input->post('oldimage');
 

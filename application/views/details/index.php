@@ -137,6 +137,7 @@
                                                                         <option value='Tim 25' <?php echo ($m['program'] == 'Tim 25') ? 'selected' : ''; ?>>Tim 25</option>
                                                                         <option value='Tim 10' <?php echo ($m['program'] == 'Tim 10') ? 'selected' : ''; ?>>Tim 10</option>
                                                                         <option value='Pasukan Timur' <?php echo ($m['program'] == 'Pasukan Timur') ? 'selected' : ''; ?>>Pasukan Timur</option>
+                                                                        <option value='Pasukan Ayam Jantan' <?php echo ($m['program'] == 'Pasukan Ayam Jantan') ? 'selected' : ''; ?>>Pasukan Ayam Jantan</option>
 
                                                                     </select>
                                                                 </div>

@@ -119,6 +119,7 @@
                                                                 <option value='Tim 25'>Tim 25</option>
                                                                 <option value='Tim 10'>Tim 10</option>
                                                                 <option value='Pasukan Timur'>Pasukan Timur</option>
+                                                                <option value='Pasukan Ayam Jantan'>Pasukan Ayam Jantan</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -255,35 +256,51 @@
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row">
-                                                                    </div>
-                                                                    <div class="form-group row">
-                                                                    </div>
-                                                                    <div class="form-group row">
-                                                                        <label for="nohp" class="col-sm-3 col-form-label">No Telpon</label>
+                                                                        <label for="program" class="col-sm-3 col-form-label">Program</label>
                                                                         <div class="col-sm-9">
-                                                                            <input type="text" class="form-control" id="nohp" name="nohp" value="<?= $m['nohp']; ?>" placeholder="No Telpon">
-                                                                            <input type="hidden" class="form-control" id="oldimage" name="oldimage" value="<?= $m['image']; ?>" placeholder="">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="form-group row">
-                                                                        <label for="image" class="col-sm-3 col-form-label">Picture</label>
-                                                                        <div class="col-sm-9">
-                                                                            <input type="file" class="form-control mb-1" id="image" name="image" accept=".bmp,.gif,.jpeg,.jpg,.png,.tiff,.tiff,.webp">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="form-group row">
-                                                                        <div class="col-sm-12">
-                                                                            <span class="info-box-icon bg-warning elevation-1">
-                                                                                <img src="<?= base_url('assets/img/dtdc/') . $m['image']; ?> " class="img-thumbnail" />
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
+                                                                            <select class="form-control" id="program" name="program">
+                                                                                <option value='Beasiswa PIP' <?php echo ($m['program'] == 'Beasiswa PIP') ? 'selected' : ''; ?>>Beasiswa PIP</option>
+                                                                                <option value='Beasiswa KIP' <?php echo ($m['program'] == 'Beasiswa KIP') ? 'selected' : ''; ?>>Beasiswa KIP</option>
+                                                                                <option value='BPUM' <?php echo ($m['program'] == 'BPUM') ? 'selected' : ''; ?>>BPUM</option>
+                                                                                <option value='Bedah Rumah' <?php echo ($m['program'] == 'Bedah Rumah') ? 'selected' : ''; ?>>Bedah Rumah</option>
+                                                                                <option value='Pelayanan' <?php echo ($m['program'] == 'Pelayanan') ? 'selected' : ''; ?>>Pelayanan</option>
+                                                                                <option value='Relawan Doa Ibu' <?php echo ($m['program'] == 'Relawan Doa Ibu') ? 'selected' : ''; ?>>Relawan Doa Ibu</option>
+                                                                                <option value='Tandem Paman' <?php echo ($m['program'] == 'Tandem Paman') ? 'selected' : ''; ?>>Tandem Paman</option>
+                                                                                <option value='Tandem Tabir' <?php echo ($m['program'] == 'Tandem Tabir') ? 'selected' : ''; ?>>Tandem Tabir</option>
+                                                                                <option value='Tim 50' <?php echo ($m['program'] == 'Tim 50') ? 'selected' : ''; ?>>Tim 50</option>
+                                                                                <option value='Tim 25' <?php echo ($m['program'] == 'Tim 25') ? 'selected' : ''; ?>>Tim 25</option>
+                                                                                <option value='Tim 10' <?php echo ($m['program'] == 'Tim 10') ? 'selected' : ''; ?>>Tim 10</option>
+                                                                                <option value='Pasukan Timur' <?php echo ($m['program'] == 'Pasukan Timur') ? 'selected' : ''; ?>>Pasukan Timur</option>
+                                                                                <option value='Pasukan Ayam Jantan' <?php echo ($m['program'] == 'Pasukan Ayam Jantan') ? 'selected' : ''; ?>>Pasukan Ayam Jantan</option>
 
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                                    <button type="submit" class="btn btn-primary">Save</button>
-                                                                </div>
+                                                                            </select>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <label for="nohp" class="col-sm-3 col-form-label">No Telpon</label>
+                                                                            <div class="col-sm-9">
+                                                                                <input type="text" class="form-control" id="nohp" name="nohp" value="<?= $m['nohp']; ?>" placeholder="No Telpon">
+                                                                                <input type="hidden" class="form-control" id="oldimage" name="oldimage" value="<?= $m['image']; ?>" placeholder="">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <label for="image" class="col-sm-3 col-form-label">Picture</label>
+                                                                            <div class="col-sm-9">
+                                                                                <input type="file" class="form-control mb-1" id="image" name="image" accept=".bmp,.gif,.jpeg,.jpg,.png,.tiff,.tiff,.webp">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <div class="col-sm-12">
+                                                                                <span class="info-box-icon bg-warning elevation-1">
+                                                                                    <img src="<?= base_url('assets/img/dtdc/') . $m['image']; ?> " class="img-thumbnail" />
+                                                                                </span>
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                        <button type="submit" class="btn btn-primary">Save</button>
+                                                                    </div>
                                                             </form>
                                                         </div>
                                                     </div>
