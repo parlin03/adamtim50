@@ -31,7 +31,7 @@ class Dtdc extends CI_Controller
             $check = $this->db->get_where('lks_dtdc', ['noktp' => $data['keyword']]);
             if ($check->num_rows() > 0) {
                 $pic = $this->db->get_where('user', ['id' => $check->row()->user_id]);
-                $this->session->set_flashdata('message1', '<div class="alert alert-danger" role ="alert">Data NIK <b>' . $data['keyword'] . '</b> Sudah Terdaftar oleh <b>' .  ucwords($pic->row()->name) . '</b></div>');
+                $this->session->set_flashdata('message1', '<div class="alert alert-danger" role ="alert">Data NIK <b>' . $data['keyword'] . '</b> Sudah Terdaftar oleh <b>' .  ucwords($pic->row()->name) . '</b> Program <b>' . ($check->row()->program) . '</div>');
 
                 $data['search_result'] = '';
             } else {
