@@ -115,12 +115,12 @@ class Details extends CI_Controller
 
     public function edit($id)
     {
-        if (!isset($id)) redirect('dtdc');
+        if (!isset($id)) redirect('tim50');
         $data['title'] = 'Door to Door Campaign';
         $data['user'] = $this->db->get_where('user', ['id' => $this->session->userdata('user_id')])->row_array();
         $this->db->where('user_id', $this->session->userdata('user_id'));
         $this->db->order_by('id', 'ASC');
-        $data['dtdc'] = $this->db->get('lks_dtdc')->result_array(); //array banyak
+        $data['tim50'] = $this->db->get('lks_tim50')->result_array(); //array banyak
 
 
         $program = $this->input->post('program');
@@ -137,12 +137,12 @@ class Details extends CI_Controller
             $config['file_name']     = $new_name;
             $config['allowed_types'] = 'bmp|gif|jpeg|jpg|png|tiff|tiff|webp';
             $config['max_size']      = '8192';
-            $config['upload_path']   = './assets/img/dtdc/';
+            $config['upload_path']   = './assets/img/tim50/';
 
             $this->load->library('upload', $config);
             if ($this->upload->do_upload('image')) {
                 if ($old_image != 'default.jpg') {
-                    unlink(FCPATH . 'assets/img/dtdc/' . $old_image);
+                    unlink(FCPATH . 'assets/img/tim50/' . $old_image);
                 }
 
                 $this->db->set('image', $this->upload->data('file_name'));
@@ -154,7 +154,7 @@ class Details extends CI_Controller
         $this->db->set('program', $program);
         $this->db->set('nohp', $nohp);
         $this->db->where('id', $id);
-        $this->db->update('lks_dtdc');
+        $this->db->update('lks_tim50');
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Your Data has been updated! </div>');
         redirect('details');
     }
@@ -167,9 +167,9 @@ class Details extends CI_Controller
             redirect('details');
         } else {
 
-            unlink(FCPATH . 'assets/img/dtdc/' . $image);
+            unlink(FCPATH . 'assets/img/tim50/' . $image);
             $this->db->where('id', $id);
-            $this->db->delete('lks_dtdc');
+            $this->db->delete('lks_tim50');
             $this->session->set_flashdata('message', '<div class="alert alert-success" role ="alert">Data Berhasil Dihapus');
             redirect('details');
         }

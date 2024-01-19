@@ -4,9 +4,9 @@ use Symfony\Component\Yaml\Dumper;
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Dtdc_model extends CI_Model
+class Tim50_model extends CI_Model
 {
-    private $table = 'lks_dtdc';
+    private $table = 'lks_tim50';
     private $tbl_dpt = 'dpt';
 
 
@@ -57,13 +57,13 @@ class Dtdc_model extends CI_Model
         //select * from mahasiswa order by IdMhsw desc
     }
 
-    public function getLksDtdc()
+    public function getLksTim50()
     {
-        $this->db->select('lks_dtdc.id, dpt.noktp, dpt.nama, dpt.alamat, namakel, namakec, rt, rw, tps, lks_dtdc.program, lks_dtdc.nohp, image');
+        $this->db->select('lks_tim50.id, dpt.noktp, dpt.nama, dpt.alamat, namakel, namakec, rt, rw, tps, lks_tim50.program, lks_tim50.nohp, image');
         $this->db->from('dpt');
-        $this->db->join('lks_dtdc', 'lks_dtdc.dpt_id = dpt.id');
-        $this->db->where('lks_dtdc.user_id', $this->session->userdata('user_id'));
-        $this->db->order_by('lks_dtdc.id', 'DESC');
+        $this->db->join('lks_tim50', 'lks_tim50.dpt_id = dpt.id');
+        $this->db->where('lks_tim50.user_id', $this->session->userdata('user_id'));
+        $this->db->order_by('lks_tim50.id', 'DESC');
         $this->db->limit(5);
         $query = $this->db->get();
         return $query->result_array();

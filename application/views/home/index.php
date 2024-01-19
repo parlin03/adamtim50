@@ -34,7 +34,7 @@
 
                                     <div class="input-group-append">
                                         <button type="submit" class="btn btn-default">
-                                            <a href="<?= base_url('dtdc'); ?>" class="btn btn-primary"> <i class="fas fa-plus"></i></a>
+                                            <a href="<?= base_url('tim50'); ?>" class="btn btn-primary"> <i class="fas fa-plus"></i></a>
                                         </button>
                                     </div>
                                 </div>
@@ -187,7 +187,7 @@
 
                                 <tbody>
                                     <?php $i = 1; ?>
-                                    <?php foreach ($dtdc as $m) : ?>
+                                    <?php foreach ($tim50 as $m) : ?>
 
                                         <tr>
                                             <td>
@@ -199,8 +199,8 @@
                                             </td>
                                             <td><?= $m['program']; ?></td>
                                             <td style="width: 150px">
-                                                <a href="<?= base_url('assets/img/dtdc/') . $m['image']; ?>" class="portfolio-popup">
-                                                    <img src="<?= base_url('assets/img/dtdc/') . $m['image']; ?> " class="img-thumbnail" />
+                                                <a href="<?= base_url('assets/img/tim50/') . $m['image']; ?>" class="portfolio-popup">
+                                                    <img src="<?= base_url('assets/img/tim50/') . $m['image']; ?> " class="img-thumbnail" />
                                                 </a>
                                             </td>
                                         </tr>

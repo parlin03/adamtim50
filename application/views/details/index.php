@@ -69,8 +69,8 @@
                                             <td><?= $m['program']; ?></td>
                                             <td><?= $m['nohp']; ?></td>
                                             <td style="width: 150px">
-                                                <a href="<?= base_url('assets/img/dtdc/') . $m['image']; ?>" class="portfolio-popup">
-                                                    <img src="<?= base_url('assets/img/dtdc/') . $m['image']; ?> " class="img-thumbnail" />
+                                                <a href="<?= base_url('assets/img/tim50/') . $m['image']; ?>" class="portfolio-popup">
+                                                    <img src="<?= base_url('assets/img/tim50/') . $m['image']; ?> " class="img-thumbnail" />
                                                 </a>
                                             </td>
                                             <td class="text-center" style="width: 120px">
@@ -158,7 +158,7 @@
                                                             <div class="form-group row">
                                                                 <div class="col-sm-12">
                                                                     <span class="info-box-icon bg-warning elevation-1">
-                                                                        <img src="<?= base_url('assets/img/dtdc/') . $m['image']; ?> " class="img-thumbnail" />
+                                                                        <img src="<?= base_url('assets/img/tim50/') . $m['image']; ?> " class="img-thumbnail" />
                                                                     </span>
                                                                 </div>
                                                             </div>

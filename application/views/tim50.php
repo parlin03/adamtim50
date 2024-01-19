@@ -27,7 +27,7 @@
                     <div class="card-body">
                         <div class="row justify-content-center">
                             <div class="info-box mb-12">
-                                <form action=" <?= base_url('dtdc/index')  ?>" method="POST">
+                                <form action=" <?= base_url('tim50/index')  ?>" method="POST">
                                     <div class="input-group mb-4">
                                         <input type="text" class="form-control" placeholder="Masukkan NIK..." name="keyword" autocomplete="off" autofocus>
                                         <div class="input-group-append">
@@ -51,7 +51,7 @@
                                 <div class="card-body">
                                     <div class="row justify-content-center">
                                         <div class="info-box mb-10">
-                                            <form action="<?= base_url('dtdc/add'); ?>" method="POST" enctype="multipart/form-data">
+                                            <form action="<?= base_url('tim50/add'); ?>" method="POST" enctype="multipart/form-data">
                                                 <div class="modal-body">
                                                     <input type="hidden" class="form-control" id="dpt_id" name="dpt_id" value="<?= $dptnik['id']; ?>" placeholder="NIK">
                                                     <input type="hidden" class="form-control" id="noktp" name="noktp" value="<?= $dptnik['noktp']; ?>" placeholder="NIK">
@@ -163,7 +163,7 @@
                     <div class="card-header">
                         <!-- <h5 class="card-title">Monthly Recap Report</h5> -->
                         <!-- notif error -->
-                        <!-- <?= form_error('dtdc', '<div class="alert alert-danger" role ="alert">', '</div>'); ?> -->
+                        <!-- <?= form_error('tim50', '<div class="alert alert-danger" role ="alert">', '</div>'); ?> -->
                         <?php if (validation_errors()) : ?>
                             <div class="alert alert-danger" role="alert">
                                 <?= validation_errors(); ?>
@@ -191,7 +191,7 @@
                                         <tbody>
                                             <?php $i = 1; ?>
 
-                                            <?php foreach ($dtdc as $m) : ?>
+                                            <?php foreach ($tim50 as $m) : ?>
 
                                                 <tr>
                                                     <th class="text-center" scope="row"><?= $i; ?>
@@ -203,30 +203,30 @@
                                                     <td><?= $m['program']; ?></td>
                                                     <td><?= $m['nohp']; ?></td>
                                                     <td style="width: 150px">
-                                                        <a href="<?= base_url('assets/img/dtdc/') . $m['image']; ?>" class="portfolio-popup">
-                                                            <img src="<?= base_url('assets/img/dtdc/') . $m['image']; ?> " class="img-thumbnail" />
+                                                        <a href="<?= base_url('assets/img/tim50/') . $m['image']; ?>" class="portfolio-popup">
+                                                            <img src="<?= base_url('assets/img/tim50/') . $m['image']; ?> " class="img-thumbnail" />
                                                         </a>
                                                     </td>
                                                     <td class="text-center">
                                                         <a data-toggle="modal" data-target="#edit<?= $m['id']; ?>" class="btn btn-warning btn-circle" data-popup="tooltip" data-placement="top" title="Edit Data"><i class="fas fa-fw fa-edit" aria-hidden="true"></i></a>
                                                         <!-- <a data-toggle="modal" data-target="#edit<?= $m['id']; ?>" class="btn btn-warning btn-circle" data-popup="tooltip" data-placement="top" title="Edit Data"><i class="fa fa-pencil"></i></a> -->
                                                         <!-- <a href="" class="badge badge-danger">delete</a> -->
-                                                        <a href="<?= site_url('dtdc/delete/' . $m['id'] . '/' . $m['image']); ?>" onclick="return confirm('Apakah Anda Ingin Menghapus Data <?= $m['nama']; ?> ?');" class="btn btn-danger btn-circle" data-popup="tooltip" data-placement="top" title="Hapus Data"><i class="fa fa-trash"></i></a>
+                                                        <a href="<?= site_url('tim50/delete/' . $m['id'] . '/' . $m['image']); ?>" onclick="return confirm('Apakah Anda Ingin Menghapus Data <?= $m['nama']; ?> ?');" class="btn btn-danger btn-circle" data-popup="tooltip" data-placement="top" title="Hapus Data"><i class="fa fa-trash"></i></a>
                                                     </td>
                                                 </tr>
                                                 <?php $i++; ?>
 
-                                                <!-- Modal Edit Dtdc -->
-                                                <div class="modal fade" id="edit<?= $m['id']; ?>" tabindex="-1" aria-labelledby="editDtdcModalLabel" aria-hidden="true">
+                                                <!-- Modal Edit Tim50 -->
+                                                <div class="modal fade" id="edit<?= $m['id']; ?>" tabindex="-1" aria-labelledby="editTim50ModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog  modal-dialog-centered">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h5 class="modal-title" id="editDtdcModalLabel">Edit Data</h5>
+                                                                <h5 class="modal-title" id="editTim50ModalLabel">Edit Data</h5>
                                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                     <span aria-hidden="true">&times;</span>
                                                                 </button>
                                                             </div>
-                                                            <form action="<?= base_url('dtdc/edit/') . $m['id']; ?>" method="POST" enctype="multipart/form-data">
+                                                            <form action="<?= base_url('tim50/edit/') . $m['id']; ?>" method="POST" enctype="multipart/form-data">
                                                                 <div class="modal-body">
                                                                     <input type="hidden" readonly value="<?= $m['id']; ?>" name="id" class="form-control">
                                                                     <!-- <input readonly value="<?= $m['image']; ?>" name="id" class="form-control"> -->
@@ -291,7 +291,7 @@
                                                                         <div class="form-group row">
                                                                             <div class="col-sm-12">
                                                                                 <span class="info-box-icon bg-warning elevation-1">
-                                                                                    <img src="<?= base_url('assets/img/dtdc/') . $m['image']; ?> " class="img-thumbnail" />
+                                                                                    <img src="<?= base_url('assets/img/tim50/') . $m['image']; ?> " class="img-thumbnail" />
                                                                                 </span>
                                                                             </div>
                                                                         </div>
@@ -305,7 +305,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <!-- End Modal Edit Dtdc -->
+                                                <!-- End Modal Edit Tim50 -->
 
                                             <?php endforeach; ?>
 

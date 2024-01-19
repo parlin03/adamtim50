@@ -16,11 +16,11 @@ class Details_model extends CI_Model
     function getKecamatan()
     {
 
-        $this->db->select('lks_dtdc.id, dpt.noktp, dpt.nama, dpt.alamat, dpt.namakel, dpt.namakec, dpt.rt, dpt.rw, dpt.tps, lks_dtdc.program, lks_dtdc.nohp, image');
+        $this->db->select('lks_tim50.id, dpt.noktp, dpt.nama, dpt.alamat, dpt.namakel, dpt.namakec, dpt.rt, dpt.rw, dpt.tps, lks_tim50.program, lks_tim50.nohp, image');
         $this->db->from('dpt');
-        $this->db->join('lks_dtdc', 'lks_dtdc.dpt_id = dpt.id');
-        $this->db->where('lks_dtdc.user_id', $this->session->userdata('user_id'));
-        $this->db->order_by('lks_dtdc.id', 'DESC');
+        $this->db->join('lks_tim50', 'lks_tim50.dpt_id = dpt.id');
+        $this->db->where('lks_tim50.user_id', $this->session->userdata('user_id'));
+        $this->db->order_by('lks_tim50.id', 'DESC');
         $query = $this->db->get();
         // var_dump($query);
         // die;

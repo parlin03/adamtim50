@@ -11,8 +11,8 @@ class Dashboard_model extends CI_Model
     public function getMainGraph()
     {
         $this->db->select('count(id) as total, date_created');
-        $this->db->from('lks_dtdc');
-        $this->db->where('lks_dtdc.user_id', $this->session->userdata('user_id'));
+        $this->db->from('lks_tim50');
+        $this->db->where('lks_tim50.user_id', $this->session->userdata('user_id'));
         $this->db->group_by('date_created');
         $this->db->order_by('date_created', 'ASC');
 
@@ -27,9 +27,9 @@ class Dashboard_model extends CI_Model
 
     public function getTotalDaftar()
     {
-        $this->db->select('count(lks_dtdc.noktp) as totaldaftar');
-        $this->db->from('lks_dtdc');
-        $this->db->where('lks_dtdc.user_id', $this->session->userdata('user_id'));
+        $this->db->select('count(lks_tim50.noktp) as totaldaftar');
+        $this->db->from('lks_tim50');
+        $this->db->where('lks_tim50.user_id', $this->session->userdata('user_id'));
         $query = $this->db->get();
         return $query->result_array();
     }
@@ -44,22 +44,22 @@ class Dashboard_model extends CI_Model
 
     public function getPencapaian()
     {
-        $this->db->select('lks_dtdc.id, dpt.noktp, dpt.nama, dpt.alamat, namakel, namakec, rt, rw, tps, count(lks_dtdc.noktp) as total');
+        $this->db->select('lks_tim50.id, dpt.noktp, dpt.nama, dpt.alamat, namakel, namakec, rt, rw, tps, count(lks_tim50.noktp) as total');
         $this->db->from('dpt');
-        $this->db->join('lks_dtdc', 'lks_dtdc.dpt_id = dpt.id');
-        $this->db->where('lks_dtdc.user_id', $this->session->userdata('user_id'));
+        $this->db->join('lks_tim50', 'lks_tim50.dpt_id = dpt.id');
+        $this->db->where('lks_tim50.user_id', $this->session->userdata('user_id'));
         $this->db->group_by('namakec');
         $query = $this->db->get();
         return $query->result_array();
     }
 
-    public function getLksDtdc()
+    public function getLksTim50()
     {
-        $this->db->select('lks_dtdc.id, dpt.noktp, dpt.nama, dpt.alamat, namakel, namakec, rt, rw, tps, lks_dtdc.program, lks_dtdc.nohp, image');
+        $this->db->select('lks_tim50.id, dpt.noktp, dpt.nama, dpt.alamat, namakel, namakec, rt, rw, tps, lks_tim50.program, lks_tim50.nohp, image');
         $this->db->from('dpt');
-        $this->db->join('lks_dtdc', 'lks_dtdc.dpt_id = dpt.id');
-        $this->db->where('lks_dtdc.user_id', $this->session->userdata('user_id'));
-        $this->db->order_by('lks_dtdc.id', 'DESC');
+        $this->db->join('lks_tim50', 'lks_tim50.dpt_id = dpt.id');
+        $this->db->where('lks_tim50.user_id', $this->session->userdata('user_id'));
+        $this->db->order_by('lks_tim50.id', 'DESC');
         $this->db->limit(5);
         $query = $this->db->get();
         return $query->result_array();

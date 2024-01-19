@@ -24,7 +24,7 @@ class Home extends CI_Controller
         $data['TotalDaftar'] = $this->dashboard->getTotalDaftar(); //single array
         $data['TotalDpt'] = $this->dashboard->getTotalDpt(); //array banyak
         $data['pencapaian'] = $this->dashboard->getPencapaian(); //array banyak
-        $data['dtdc'] = $this->dashboard->getLksDtdc(); //array banyak
+        $data['tim50'] = $this->dashboard->getLksTim50(); //array banyak
         // $data['maingraph'] = $this->dashboard->mainGraph();
         // $data['graphpanakukkang'] = $this->dashboard->graphPanakukkang();
         $this->load->view('templates/header', $data);
