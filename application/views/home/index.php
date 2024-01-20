@@ -193,16 +193,18 @@
                                             <td>
                                                 <?= $m['noktp']; ?>
                                                 <br><b><?= $m['nama']; ?></b>
-                                                <br>Kec. <?= $m['namakec']; ?> Kel. <?= $m['namakel']; ?>
+                                            </td>
+                                            <td>
+                                                <?= $m['alamat']; ?>
+                                                Kec. <?= $m['namakec']; ?> Kel. <?= $m['namakel']; ?>
                                                 <br>RT <?= $m['rt']; ?> RW <?= $m['rw']; ?> TPS <?= $m['tps']; ?>
-                                                <br><?= $m['nohp']; ?>
+
                                             </td>
-                                            <td><?= $m['program']; ?></td>
-                                            <td style="width: 150px">
-                                                <a href="<?= base_url('assets/img/tim50/') . $m['image']; ?>" class="portfolio-popup">
-                                                    <img src="<?= base_url('assets/img/tim50/') . $m['image']; ?> " class="img-thumbnail" />
-                                                </a>
+                                            <td style="vertical-align: middle;">
+                                                <?= $m['nohp']; ?>
                                             </td>
+                                            <td class="<?= $m['status'] == 'DPT' ? 'bg-green' : 'bg-red'; ?>"></td>
+
                                         </tr>
 
                                         <?php $i++; ?>

@@ -48,64 +48,13 @@
    <script src="<?= base_url('assets/') ?>dist/js/adminlte.js"></script>
 
    <!-- OPTIONAL SCRIPTS -->
-   <script src="<?= base_url('assets/') ?>dist/js/demo.js"></script>
+   <!-- <script src="<?= base_url('assets/') ?>dist/js/demo.js"></script> -->
 
-   <!-- PAGE PLUGINS -->
-   <!-- jQuery Mapael -->
-   <script src="<?= base_url('assets/') ?>plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
-   <script src="<?= base_url('assets/') ?>plugins/raphael/raphael.min.js"></script>
-   <script src="<?= base_url('assets/') ?>plugins/jquery-mapael/jquery.mapael.min.js"></script>
-   <script src="<?= base_url('assets/') ?>plugins/jquery-mapael/maps/usa_states.min.js"></script>
-   <!-- ChartJS -->
-   <script src="<?= base_url('assets/') ?>plugins/chart.js/Chart.min.js"></script>
 
    <!-- PAGE SCRIPTS -->
    <!-- <script src="<?= base_url('assets/') ?>dist/js/pages/dashboard2.js"></script> -->
 
-   <script type="text/javascript">
-       // memanggil plugin magnific popup
-       $('.portfolio-popup').magnificPopup({
-           type: 'image',
-           removalDelay: 300,
-           mainClass: 'mfp-fade',
-           gallery: {
-               enabled: true
-           },
-           zoom: {
-               enabled: true,
-               duration: 300,
-               easing: 'ease-in-out',
-               opener: function(openerElement) {
-                   return openerElement.is('img') ? openerElement : openerElement.find('img');
-               }
-           }
-       });
-       // memanggil datatable membuat callback datatable pada magnific popup agar gambar 
-       // yang di munculkan sesuai pada saat pindah paginasi dari 1 ke 2 
-       // dan seterusnya
-       $(document).ready(function() {
-           var table = $('#example').dataTable({
-               "fnDrawCallback": function() {
-                   $('.portfolio-popup').magnificPopup({
-                       type: 'image',
-                       removalDelay: 300,
-                       mainClass: 'mfp-fade',
-                       gallery: {
-                           enabled: true
-                       },
-                       zoom: {
-                           enabled: true,
-                           duration: 300,
-                           easing: 'ease-in-out',
-                           opener: function(openerElement) {
-                               return openerElement.is('img') ? openerElement : openerElement.find('img');
-                           }
-                       }
-                   });
-               }
-           });
-       });
-   </script>
+
 
    </body>
 

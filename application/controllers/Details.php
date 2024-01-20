@@ -83,8 +83,6 @@ class Details extends CI_Controller
         $this->form_validation->set_rules('nik', 'Nik', 'required');
         $this->form_validation->set_rules('nama', 'Nama', 'required');
         $this->form_validation->set_rules('alamat', 'Alamat', 'required');
-        $this->form_validation->set_rules('program', 'Program', 'required');
-        $this->form_validation->set_rules('tanggapan', 'Tanggapan', 'required');
         $this->load->view('templates/header', $data);
         // $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
@@ -107,7 +105,7 @@ class Details extends CI_Controller
                 'user_id'   => $this->session->userdata('user_id')
             ];
 
-            $this->db->insert('lks_vjp', $data);
+            $this->db->insert('tim50', $data);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role ="alert">New Verifikasi added!</div>');
             redirect('verifikasi');
         }
@@ -125,31 +123,11 @@ class Details extends CI_Controller
 
         $program = $this->input->post('program');
         $nohp = $this->input->post('nohp');
-        $old_image = $this->input->post('oldimage');
 
         // $dpt_id = $this->input->post('dpt_id');
 
         // cek jika da gambar yang akan diupload
-        $upload_image = $_FILES['image']['name'];
-
-        if ($upload_image) {
-            $new_name                = $data['user']['id'] . time() . $_FILES["image"]['name'];
-            $config['file_name']     = $new_name;
-            $config['allowed_types'] = 'bmp|gif|jpeg|jpg|png|tiff|tiff|webp';
-            $config['max_size']      = '8192';
-            $config['upload_path']   = './assets/img/tim50/';
-
-            $this->load->library('upload', $config);
-            if ($this->upload->do_upload('image')) {
-                if ($old_image != 'default.jpg') {
-                    unlink(FCPATH . 'assets/img/tim50/' . $old_image);
-                }
-
-                $this->db->set('image', $this->upload->data('file_name'));
-            } else {
-                echo $this->upload->display_errors();
-            }
-        }
+     
 
         $this->db->set('program', $program);
         $this->db->set('nohp', $nohp);

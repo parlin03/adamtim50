@@ -59,9 +59,8 @@ class Tim50_model extends CI_Model
 
     public function getLksTim50()
     {
-        $this->db->select('lks_tim50.id, dpt.noktp, dpt.nama, dpt.alamat, namakel, namakec, rt, rw, tps, lks_tim50.program, lks_tim50.nohp, image');
-        $this->db->from('dpt');
-        $this->db->join('lks_tim50', 'lks_tim50.dpt_id = dpt.id');
+        $this->db->select('id, noktp, nama, alamat, namakel, namakec, rt, rw, tps, status, nohp');
+        $this->db->from('lks_tim50');
         $this->db->where('lks_tim50.user_id', $this->session->userdata('user_id'));
         $this->db->order_by('lks_tim50.id', 'DESC');
         $this->db->limit(5);
@@ -92,10 +91,12 @@ class Tim50_model extends CI_Model
             'nik'       => $this->input->post('nik'),
             'nama'      => $this->input->post('nama'),
             'alamat'    => $this->input->post('alamat'),
+            'rt'    => $this->input->post('rt'),
+            'rw'    => $this->input->post('rw'),
+            'tps'    => $this->input->post('tps'),
             'namakel' => $this->input->post('kelurahan'),
             'namakec' => $this->input->post('kecamatan'),
             'nohp'      => $this->input->post('nohp'),
-            'tanggapan' => $this->input->post('tanggapan'),
             'user_id'   => $this->session->userdata('user_id')
         ];
         return $this->db->insert($this->table, $data);
@@ -108,10 +109,12 @@ class Tim50_model extends CI_Model
             'nik'       => $this->input->post('nik'),
             'nama'      => $this->input->post('nama'),
             'alamat'    => $this->input->post('alamat'),
+            'rt'    => $this->input->post('rt'),
+            'rw'    => $this->input->post('rw'),
+            'tps'    => $this->input->post('tps'),
             'namakel' => $this->input->post('kelurahan'),
             'namakec' => $this->input->post('kecamatan'),
             'nohp'      => $this->input->post('nohp'),
-            'tanggapan' => $this->input->post('tanggapan'),
             'user_id'   => $this->session->userdata('user_id')
         ];
         return $this->db->update($this->table, $data, ['id' => $this->input->post('id')]);
@@ -121,5 +124,36 @@ class Tim50_model extends CI_Model
     public function delete($id)
     {
         return $this->db->delete($this->table, ["id" => $id]);
+    }
+
+    function getkec($searchTerm = "")
+    {
+        $this->db->select('idkec, namakec');
+        $this->db->where("namakec like '%" . $searchTerm . "%' ");
+        $this->db->order_by('idkec', 'asc');
+        $fetched_records = $this->db->get('kec');
+        $datakec = $fetched_records->result_array();
+
+        $data = array();
+        foreach ($datakec as $kec) {
+            $data[] = array("id" => $kec['idkec'], "text" => $kec['namakec']);
+        }
+        return $data;
+    }
+
+    function getkel($idkec, $searchTerm = "")
+    {
+        $this->db->select('iddesa, namakel');
+        $this->db->where('idkec', $idkec);
+        $this->db->where("namakel like '%" . $searchTerm . "%' ");
+        $this->db->order_by('iddesa', 'asc');
+        $fetched_records = $this->db->get('kelupaten');
+        $datakel = $fetched_records->result_array();
+
+        $data = array();
+        foreach ($datakel as $kel) {
+            $data[] = array("id" => $kel['iddesa'], "text" => $kel['namakel']);
+        }
+        return $data;
     }
 }

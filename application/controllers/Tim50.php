@@ -37,10 +37,10 @@ class Tim50 extends CI_Controller
             } else {
                 $checkdpt = $this->db->get_where('dpt', ['noktp' => $data['keyword']]);
                 if ($checkdpt->num_rows() > 0) {
-                    $this->session->set_flashdata('message1', '<div class="alert alert-success" role ="alert">Data NIK <b>' . $data['keyword'] . '</b> Ditemukan. Segera Perbaharui Data</div>');
+                    $this->session->set_flashdata('message1', '<div class="alert alert-success" role ="alert">Data NIK <b>' . $data['keyword'] . '</b> Ditemukan. Tambahkan data manual </div>');
                     $data['search_result'] = $this->Tim50_model->search($data['keyword']);
                 } else {
-                    $this->session->set_flashdata('message1', '<div class="alert alert-danger" role ="alert">Data NIK <b>' . $data['keyword'] . '</b> Tidak Ditemukan. Segera daftarkan NIK <b>' . $data['keyword'] . '</b> ke KPU untuk mendapatkan nomor TPS</div>');
+                    $this->session->set_flashdata('message1', '<div class="alert alert-danger" role ="alert">Data NIK <b>' . $data['keyword'] . '</b> Tidak Ditemukan. <a data-toggle="modal" data-target="#add" class="btn btn-warning btn-circle" data-popup="tooltip" data-placement="top" title="Edit Data"><b>Tambahkan data ' . $data['keyword'] . '</b> </a></div>');
                     $data['search_result'] = '';
                 }
             }
@@ -64,42 +64,25 @@ class Tim50 extends CI_Controller
         ]);
 
         // var_dump($this->input->post('program'));
+        $datanew = [
+            'dpt_id'    => $this->input->post('dpt_id'),
+            'noktp'     => $this->input->post('noktp'),
+            'nama'      => $this->input->post('nama'),
+            'alamat'    => $this->input->post('alamat'),
+            'rt'        => $this->input->post('rt'),
+            'rw'        => $this->input->post('rw'),
+            'namakel'   => $this->input->post('kelurahan'),
+            'namakec'   => $this->input->post('kecamatan'),
+            'tps'       => $this->input->post('tps'),
+            'status'    => $this->input->post('status'),
+            'nohp'    => $this->input->post('nohp'),
+            'user_id'   => $this->session->userdata('user_id'),
+            'date_created'   => date("Y-m-d")
 
-        $upload_image = $_FILES['image']['name'];
-
-        if ($upload_image) {
-            $new_name                = $data['user']['id'] . time() . $_FILES["image"]['name'];
-            $config['file_name']     = $new_name;
-            $config['allowed_types'] = 'bmp|gif|jpeg|jpg|png|tiff|tiff|webp';
-            $config['max_size']      = '8192';
-            $config['upload_path']   = './assets/img/tim50/';
-
-            $this->load->library('upload', $config);
-            if ($this->upload->do_upload('image')) {
-                // $old_image = $data['user']['image'];
-                // if ($old_image != 'default.jpg') {
-                //     unlink(FCPATH . 'assets/img/tim50/' . $old_image);
-                // }
-
-                $datanew = [
-                    'dpt_id'       => $this->input->post('dpt_id'),
-                    'noktp'       => $this->input->post('noktp'),
-                    'nohp'      => $this->input->post('nohp'),
-                    'program'      => $this->input->post('program'),
-                    'image' =>  $this->upload->data('file_name'),
-                    'user_id'   => $this->session->userdata('user_id'),
-                    'date_created'   => date("Y-m-d")
-
-                ];
-                $this->db->insert('lks_tim50', $datanew);
-                $this->session->set_flashdata('message', '<div class="alert alert-success" role ="alert">New DTDC added!</div>');
-                redirect('tim50');
-                // $new_image = $this->upload->data('file_name');
-                // $this->db->set('image', $new_image);
-            } else {
-                echo $this->upload->display_errors();
-            }
-        }
+        ];
+        $this->db->insert('lks_tim50', $datanew);
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role ="alert">New data added!</div>');
+        redirect('tim50');
     }
 
     public function edit($id = null)
@@ -113,33 +96,12 @@ class Tim50 extends CI_Controller
         $this->db->order_by('id', 'ASC');
         $data['tim50'] = $this->db->get('lks_tim50')->result_array(); //array banyak
 
-        $program = $this->input->post('program');
         $nohp = $this->input->post('nohp');
-        $old_image = $this->input->post('oldimage');
 
         // $dpt_id = $this->input->post('dpt_id');
 
         // cek jika da gambar yang akan diupload
-        $upload_image = $_FILES['image']['name'];
 
-        if ($upload_image) {
-            $new_name                = $data['user']['id'] . time() . $_FILES["image"]['name'];
-            $config['file_name']     = $new_name;
-            $config['allowed_types'] = 'bmp|gif|jpeg|jpg|png|tiff|tiff|webp';
-            $config['max_size']      = '8192';
-            $config['upload_path']   = './assets/img/tim50/';
-
-            $this->load->library('upload', $config);
-            if ($this->upload->do_upload('image')) {
-                if ($old_image != 'default.jpg') {
-                    unlink(FCPATH . 'assets/img/tim50/' . $old_image);
-                }
-
-                $this->db->set('image', $this->upload->data('file_name'));
-            } else {
-                echo $this->upload->display_errors();
-            }
-        }
 
         $this->db->set('nohp', $nohp);
         $this->db->where('id', $id);
@@ -160,5 +122,20 @@ class Tim50 extends CI_Controller
             $this->session->set_flashdata('message', '<div class="alert alert-success" role ="alert">Data Berhasil Dihapus');
             redirect('tim50');
         }
+    }
+
+    public function getdatakec()
+    {
+        $searchTerm = $this->input->post('searchTerm');
+        $response   = $this->m_tim50->getkec($searchTerm);
+        echo json_encode($response);
+    }
+
+    // Kabupaten
+    public function getdatakab($idkec)
+    {
+        $searchTerm = $this->input->post('searchTerm');
+        $response   = $this->m_tim50->getkab($idkec, $searchTerm);
+        echo json_encode($response);
     }
 }
