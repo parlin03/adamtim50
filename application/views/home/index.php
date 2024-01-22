@@ -41,19 +41,6 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <div class="d-flex">
-                                <p class="d-flex flex-column">
-                                    <!-- <span class="text-bold text-lg">820</span>
-                                    <span>Visitors Over Time</span> -->
-                                </p>
-                                <p class="ml-auto d-flex flex-column text-right">
-                                    <!-- <span class="text-success">
-                                        <i class="fas fa-arrow-up"></i> 12.5%
-                                    </span>
-                                    <span class="text-muted">Since last week</span> -->
-                                </p>
-                            </div>
-                            <!-- /.d-flex -->
                             <?php
                             if (!empty($grafik)) {
                                 /* Mengambil query report*/
@@ -69,7 +56,7 @@
                             <!-- END load chart -->
 
                             <div class="position-relative mb-4">
-                                <div id="report"></div>
+                                <div id="report" style="height: 330px;"></div>
                                 <!-- <canvas id="report" height="350"></canvas> -->
                             </div>
 
@@ -100,7 +87,7 @@
                             <span class="info-box-text">Total Suara Terdaftar</span>
                             <span class="info-box-number"><?= $tdaftar; ?></span>
                         </div>
-                        <span class="info-box-icon"><a href="<?= base_url('details'); ?>"><i class="fas fa-edit"></i></a></span>
+                        <span class="info-box-icon"><a href="<?= base_url('tim50/details'); ?>"><i class="fas fa-edit"></i></a></span>
                         <!-- /.info-box-content -->
                     </div>
                     <!-- /.info-box -->
@@ -203,7 +190,7 @@
                                             <td style="vertical-align: middle;">
                                                 <?= $m['nohp']; ?>
                                             </td>
-                                            <td class="<?= $m['status'] == 'DPT' ? 'bg-green' : 'bg-red'; ?>"></td>
+                                            <td class="<?= $m['status'] == 'Terdaftar DPT' ? 'bg-green' : 'bg-red'; ?>"></td>
 
                                         </tr>
 
