@@ -35,8 +35,8 @@
                     <?= $this->session->flashdata('message'); ?>
                     <!--  -->
                     <div class="card">
-                        <div class="card-body table-responsive p-0">
-                            <table class="table table-hover text-nowrap" align="center">
+                        <div class="card-body ">
+                            <table id="details" class="table table-bordered table-striped">
                                 <thead class=" text-dark">
                                     <tr>
                                         <TH>#</th>
@@ -44,7 +44,8 @@
                                         <TH>Alamat</th>
                                         <TH>TPS</th>
                                         <TH>No Telpon</th>
-                                        <TH colspan="2">Aksi</th>
+                                        <TH>Aksi</th>
+                                        <TH></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -53,8 +54,8 @@
                                     <?php foreach ($details as $m) : ?>
 
                                         <tr>
-                                            <th class="text-center" scope="row"><?= $i; ?>
-                                            </th>
+                                            <td class="text-center" scope="row"><?= $i; ?>
+                                            </td>
                                             <td><b><?= $m['noktp']; ?></b>
                                                 <br><b><?= $m['nama']; ?></b>
                                             </td>
@@ -199,3 +200,32 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+
+<!-- jQuery -->
+<!-- <script src="<?php echo base_url(); ?>assets/plugins/jquery/jquery.min.js"></script> -->
+<!-- Bootstrap 4 -->
+<script src="<?php echo base_url(); ?>assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- DataTables  & Plugins -->
+<script src="<?php echo base_url(); ?>assets/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/plugins/jszip/jszip.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/plugins/pdfmake/pdfmake.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/plugins/pdfmake/vfs_fonts.js"></script>
+<script src="<?php echo base_url(); ?>assets/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
+<script>
+    $(function() {
+        $("#details").DataTable({
+            "responsive": true,
+            "lengthChange": false,
+            "autoWidth": false
+        })
+
+    });
+</script>
